@@ -12,16 +12,16 @@ _Props_ are the mechanism _React _uses to let components communicate with eac
 <pre class="lang:js decode:true">const ChildComponent = React.createClass({
     render() {
         return (
-            &lt;p&gt;
-                &lt;i&gt;{this.props.id}&lt;/i&gt;: {this.props.message}
-            &lt;/p&gt;
+            <p>
+                <i>{this.props.id}</i>: {this.props.message}
+            </p>
         );
     }
 });
 
 const ParentComponent = React.createClass({
     render() {
-        return &lt;ChildComponent message="Narwhal" id={3}/&gt;;
+        return <ChildComponent message="Narwhal" id={3}/>;
     }
 });</pre>
 As you can see, the _ParentComponent_ passes the string _"Narwhal"_ and number _3_ to the properties _'message'_ and _'id'_ of _ChildComponent_. React components have an internal property 'props'. This property contains all the props a component gets from its parent. So in this case _ChildComponent_ would get the message via _this.props.message_, everything great so far!
@@ -36,9 +36,9 @@ This is where Reacts _propTypes_ come in. It's essentially a dictionary where yo
     }
     render() {
         return (
-            &lt;p&gt;
-                &lt;i&gt;{this.props.id}&lt;/i&gt;: {this.props.message}
-            &lt;/p&gt;
+            <p>
+                <i>{this.props.id}</i>: {this.props.message}
+            </p>
         );
     }
 });</pre>

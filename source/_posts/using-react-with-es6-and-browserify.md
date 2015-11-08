@@ -76,7 +76,7 @@ Now that we can handle ES6 + JSX code, how should your React code itself look? W
 
 export default class MyComponent extends React.component {
     render() {
-        return &lt;div&gt;Hello World&lt;/div&gt;;
+        return <div>Hello World</div>;
     }
 }</pre>
 This is nice because you now have a "real" ES6 class, so you can use inheritance, constructors and getter/setter methods. However, you cannot use mixins, at Facebook they are currently working on a better solution for that. I use mixins a lot so I use a more "classic" approach:
@@ -84,7 +84,7 @@ This is nice because you now have a "real" ES6 class, so you can use inheritance
 
 export default React.createClass({
     render() {
-        return &lt;div&gt;Hello World&lt;/div&gt;;
+        return <div>Hello World</div>;
     }
 });</pre>
 This looks almost the same as the ES5 version, so why use ES6 anyway?

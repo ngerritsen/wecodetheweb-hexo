@@ -24,7 +24,7 @@ As a front-end developer I use Gulp a lot, but nothing is more annoying than an
 The task above would compile your main.scss to a main.css, pass the main.css file to autoprefixer, which will in his turn prefix/extend all of the cross browser incompatible rules. Note the 'last 2 version' string. You can actually define which browsers you want to support! For instance you could do:
 <pre class="lang:js decode:true ">.pipe(postcss([ autoprefixer({ browsers: ['ie 6 ie 7 chrome 40'] }) ]))
 // No :( lets not support IE6 anymore!
-.pipe(postcss([ autoprefixer({ browsers: ['last 3 version', &gt; 10%] }) ]))
+.pipe(postcss([ autoprefixer({ browsers: ['last 3 version', > 10%] }) ]))
 // This will support the last 3 versions of each major browser with a usage statistic of over 10%
 </pre>
 So a lot of options and no more using compass mixins in your SASS, so instead of:

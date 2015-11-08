@@ -10,7 +10,10 @@ categories:
 date: 2015-09-29 15:24:22
 ---
 
-**The [Flux](https://facebook.github.io/flux/) application design pattern is still going strong and gaining popularity. There are countless libraries around, helping you implement Flux. But lately, one has been standing out. <!-- more --> [Redux](http://rackt.github.io/redux/docs/introduction) is definitely the most simple implementation of Flux I have seen so far and it's very functional too, actually, it's just a bunch of functions!**
+**The [Flux](https://facebook.github.io/flux/) application design pattern is still going strong and gaining popularity. There are countless libraries around, helping you implement Flux. But lately, one has been standing out.** <!-- more -->  
+
+[Redux](http://rackt.github.io/redux/docs/introduction) is definitely the most simple implementation of Flux I have seen so far and it's very functional too, actually, it's just a bunch of functions!
+
 > If you don't know about Flux yet, read my article about it: [Flux, what and why?](http://wecodetheweb.com/2015/08/22/flux-what-and-why/), or go and [Google some Flux...](http://lmgtfy.com/?q=Flux%20js)
 
 ## Functions, functions everywhere
@@ -50,7 +53,7 @@ So, we start off with a default of 0 money. Then if an action is fired, we check
 So, how do we fire off this action? I mean, we need some money right?
 <pre class="lang:default decode:true">store.dispatch(addMoney(1000000)) //1 million!</pre>
 One line, that's it! [startCode]addMoney[endCode] will return an action object of type [startCode]ADD_MONEY[endCode] with an amount value of 1000000\. The store will pass that action to the reducer, which will determine the new state. This new state is then stored in the store and can be accessed like this:
-<pre class="lang:default decode:true">store.getState() // =&gt; 1000000</pre>
+<pre class="lang:default decode:true">store.getState() // => 1000000</pre>
 
 ## The cycle
 
@@ -100,9 +103,9 @@ let store = createStore(combineReducers({
 This has the exact same result and is completely optional, but can be more convenient.
 
 Get state still works the same, but now it returns an object with two properties:
-<pre class="lang:default decode:true">store.getState() // =&gt; { money: 0, awesomeness: 0 }
+<pre class="lang:default decode:true">store.getState() // => { money: 0, awesomeness: 0 }
 store.dispatch(addMoney(500000))
-store.getState() // =&gt; { money: 500000, awesomeness: 0 }</pre>
+store.getState() // => { money: 500000, awesomeness: 0 }</pre>
 The store updates the state according to the action you pass to it. There are no weird side effects, just simple input output logic.
 
 ## Wiring up React
@@ -127,10 +130,10 @@ class MyCoolComponent extends Component {
   render() {
     const { money, awesomeness } = this.props
     return (
-      &lt;div&gt;
-        &lt;p&gt;`I have ${money}€, and I\'m ${awesomeness} awesome!`&lt;/p&gt;
-        &lt;button onClick={this.giveMoney}&gt;Give me 10€&lt;/button&gt;
-      &lt;/div&gt;
+      <div>
+        <p>`I have ${money}€, and I\'m ${awesomeness} awesome!`</p>
+        <button onClick={this.giveMoney}>Give me 10€</button>
+      </div>
     )
   }
 }</pre>
@@ -139,15 +142,15 @@ This component needs the _money_ and _awesomeness_ props to be passed to it. It 
 Now we have to _connect_ the component to redux, so that it can pass us the money and awesomeness props. To do this we will use the package '_react-redux_', which will '_connect_' our view to our store. This will let the view update automatically when the state of the store changes.
 <pre class="lang:default decode:true">import { connect, Provider } from 'react-redux'
 
-connect((state) =&gt; state)(MyCoolComponent)
+connect((state) => state)(MyCoolComponent)
 
 ReactDOM.render(
-  &lt;Provider store={store}&gt;
-    &lt;MyCoolComponent&gt;
-  &lt;/Provider&gt;,
+  <Provider store={store}>
+    <MyCoolComponent>
+  </Provider>,
   document.getElementById('container')
 )</pre>
-First we import the _connect_ function and the _Provider_ component from '_react-redux_'. Then we connect _MyCoolComponent_ to the store. The connect method takes a function that allows you to control how the state is passed to the component. For now just [startCode](state) =&gt; state[endCode] will be sufficient. Then we pass _MyCoolComponent_ to the function connect returns, our component is now ready for connection with redux.
+First we import the _connect_ function and the _Provider_ component from '_react-redux_'. Then we connect _MyCoolComponent_ to the store. The connect method takes a function that allows you to control how the state is passed to the component. For now just [startCode](state) => state[endCode] will be sufficient. Then we pass _MyCoolComponent_ to the function connect returns, our component is now ready for connection with redux.
 
 At last we render our component into the DOM, but we wrap it in the _Provider_ component. We pass the _Provider_ component the store, the _Provider_ will now connect the '_connected_' components inside of it with the store. And that's it. Our component now updates when the state of the store changes.
 

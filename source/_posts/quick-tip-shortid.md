@@ -14,7 +14,7 @@ const id = shortid.generate();
 
 <!-- more -->
 
-console.log(id); // =&gt; AcBx2A4</pre>
+console.log(id); // => AcBx2A4</pre>
 Unique, url friendly id's, short and simple :-).
 <pre class="lang:sh decode:true">npm install shortid</pre>
 Github: [github.com/dylang/shortid](https://github.com/dylang/shortid)

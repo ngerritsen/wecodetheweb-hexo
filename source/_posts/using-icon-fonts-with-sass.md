@@ -15,7 +15,7 @@ Sometimes you want to display an icon in your website somewhere, but you do not 
 <!-- more -->
 
 Most of the times they let you add icons with an HTML tag like this:
-<pre class="lang:xhtml decode:true">&lt;i class="fa fa-rocket"&gt;&lt;/i&gt;</pre>
+<pre class="lang:xhtml decode:true"><i class="fa fa-rocket"></i></pre>
 This is how you would add a rocket icon in font-awesome. As you can see it is an _'i'_ element with two classes. The element type does not really matter, but the classes do. The first class _'fa'_ adds the base style rules for adding an icon. If we check out the [FontAwesome GitHub project](https://github.com/FortAwesome/Font-Awesome):
 <pre class="lang:css decode:true">.fa {
   display: inline-block;
@@ -54,7 +54,7 @@ I have stripped some of the default styles, because they are not necessary and y
   }
 }</pre>
 We have now created a usable icon insertion method in our own webpage. Now render the element in our HTML and we should get something like the result below.
-<pre class="lang:xhtml decode:true ">&lt;a href="http://some-external-link.com" class="web-link"&gt;Some external link&lt;/a&gt;</pre>
+<pre class="lang:xhtml decode:true "><a href="http://some-external-link.com" class="web-link">Some external link</a></pre>
 [![External icon link](http://wecodetheweb.com/wp-content/uploads/2015/05/Schermafbeelding-2015-05-25-om-10.49.34.png)](http://wecodetheweb.com/wp-content/uploads/2015/05/Schermafbeelding-2015-05-25-om-10.49.34.png)
 
 FontAwesome already provides you with a [FontAwesome SASS project](https://github.com/FortAwesome/font-awesome-sass), containing all the icons and mixins like we just created. But we have now learned how this works and can create our own mixins, suiting our needs and using other icon sets. For instance Bootstrap Glyphicons will work almost the same except for other character codes and using the _'Glyphicon Halflings'_ font instead of _'FontAwesome'_.

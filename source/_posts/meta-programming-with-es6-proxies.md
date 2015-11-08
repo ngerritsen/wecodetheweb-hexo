@@ -26,8 +26,8 @@ address = new Proxy(address, {
   }
 });
 
-console.log(address.street); // =&gt; 'ELITE STREET'
-console.log(address['postalCode']); // =&gt; '1337 XD'</pre>
+console.log(address.street); // => 'ELITE STREET'
+console.log(address['postalCode']); // => '1337 XD'</pre>
 _First we create a plain old Javascript object with the address properties in it. Then we create a new Proxy, its constructor takes two parameters, a target and a handler. The target will be the object you want to modify the behaviour of. The handler will be an object with the methods you want to intercept on it. The 'get' method is a native operation on a Javascript object, called with the dot (obj.prop) or bracket (obj['prop']) notation. It receives the target and the property._
 > Currently only Firefox 4 supports Proxies (with ES5 syntax). If you want to test proxies you could use Firefox or use the [harmony-reflect polyfill](https://github.com/tvcutsem/harmony-reflect).
 That's how easy it is! The Proxy is essentially just a wrapper that intercepts (or 'traps') native operations and executes the modified behaviour on it.
@@ -47,7 +47,7 @@ bankAccount = new Proxy(bankAccount, {
 
 bankAccount.money = 1000000;
 
-console.log(bankAccount.money); // =&gt; 2000000</pre>
+console.log(bankAccount.money); // => 2000000</pre>
 _In this example we overwrite the set function, which overrides the default assignment. If we now deposit 100000 on the bank account, it will instead put 200000 on there._
 
 ## Conclusion
