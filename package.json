@@ -5,6 +5,10 @@
   "hexo": {
     "version": "3.1.1"
   },
+  "scripts": {
+    "build": "npm run build:assets; hexo clean; hexo generate;",
+    "build:assets": "cd themes/wecodetheweb; npm run build; cd ../.."
+  },
   "dependencies": {
     "hexo": "^3.1.0",
     "hexo-generator-archive": "^0.1.2",
