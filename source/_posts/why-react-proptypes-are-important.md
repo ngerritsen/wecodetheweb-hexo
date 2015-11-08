@@ -68,7 +68,7 @@ The _propTypes_ object kind of defines the _'interface'_ for using a component. 
 
 I think _'propTypes'_ is one of the strongest features of React. It also shows that the developers of React care and they want it to be a professional framework. Although _propTypes _are optional, you should always use them!
 
-### References
+## References
 
 React PropTypes: [facebook.github.io/react/docs/reusable-components.html](https://facebook.github.io/react/docs/reusable-components.html)
 

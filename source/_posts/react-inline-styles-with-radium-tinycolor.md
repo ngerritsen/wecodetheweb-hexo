@@ -121,7 +121,7 @@ We can now just use _:hover_ styles in our style object and Radium handles the 
 
 As you can see, lot's of possibilities. I'm eager to hear about anyone that applied this in their projects and what their experiences are. Happy styling!
 
-### Reference
+## Reference
 
 React inline styles: [facebook.github.io/react/tips/inline-styles](https://facebook.github.io/react/tips/inline-styles.html)
 

@@ -72,7 +72,7 @@ with destructuring:
 }</pre>
 At first sight the second method does not seem more efficient. But it declares what props are going to be used, the code is more readable and in larger render functions the advantages will become more evident. If you are coding ES6 in your project, try destructuring out!
 
-### References
+## References
 
 Try out ES6: [babeljs.io/repl/](https://babeljs.io/repl/)
 

@@ -41,7 +41,7 @@ This is not the whole story however, Compass actually does more. It adds some us
 
 Compass is not actually dead, it offers a lot of cool functionality.But in a lot of cases I think the autoprefixer solution is more elegant en flexible. But in the end, use what ever you want!
 
-#### Reference:
+## Reference:
 
 [github.com/postcss/autoprefixer](https://github.com/postcss/autoprefixer)
 

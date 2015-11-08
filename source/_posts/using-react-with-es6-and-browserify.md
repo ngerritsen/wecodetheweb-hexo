@@ -16,7 +16,7 @@ date: 2015-05-22 14:30:15
 
 When using React, you can use ES6 to make your life more easy. First of all you need a transpiler, [Babel](https://babeljs.io/) is the way to go as of today. It transpiles ES6 with JSX (Facebook's special syntax for React).
 
-### Transpiling
+## Transpiling
 
 In the following example I will be using Browserify for dependency management and Gulp for running al the tasks. Browserify will allow us to use the ES6 'import' syntax to import one Javascript file into another.
 <pre class="lang:js decode:true">var gulp = require('gulp');
@@ -69,7 +69,7 @@ So a quick recap:
 2.  Transform files with babelify from ES6 + JSX to plain ES5
 3.  Bundle them into one file
 
-### Coding
+## Coding
 
 Now that we can handle ES6 + JSX code, how should your React code itself look? Well for React classes you can now do:
 <pre class="lang:js decode:true ">import React from 'react';
@@ -95,7 +95,7 @@ This looks almost the same as the ES5 version, so why use ES6 anyway?
 > Note: Babelify actually compiles the import statements to the NodeJS require syntax. This allows Browserify to leverage the NodeJS module system for resolving dependencies.
 I think unless your development environment makes it impossible to run the transpilations, using ES6 is a no brainer. It makes you future proof, write cleaner code and it is fun!
 
-#### Reference
+## Reference
 
 Browserify: [browserify.org](http://browserify.org/)
 

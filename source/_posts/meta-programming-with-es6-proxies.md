@@ -32,7 +32,7 @@ _First we create a plain old Javascript object with the address properties in it
 > Currently only Firefox 4 supports Proxies (with ES5 syntax). If you want to test proxies you could use Firefox or use the [harmony-reflect polyfill](https://github.com/tvcutsem/harmony-reflect).
 That's how easy it is! The Proxy is essentially just a wrapper that intercepts (or 'traps') native operations and executes the modified behaviour on it.
 
-### Getting rich
+## Getting rich
 
 Let's do another example, we have a bank account but because we are rich mofo's we always want to have twice as much.
 <pre class="lang:default decode:true">let bankAccount = {
@@ -50,11 +50,11 @@ bankAccount.money = 1000000;
 console.log(bankAccount.money); // =&gt; 2000000</pre>
 _In this example we overwrite the set function, which overrides the default assignment. If we now deposit 100000 on the bank account, it will instead put 200000 on there._
 
-### Conclusion
+## Conclusion
 
 Proxies are cool, but should not be misused as a hack to accomplish certain tasks. You can do way more with them then just changing getting and setting behaviour. They should not be your staple tool in building apps. But they could for instance be used to build certain functionalities into a library or framework. Or to make special kind of objects to be used throughout your application. Happy coding!
 
-### Reference
+## Reference
 
 *   Harmony-reflect polyfill: [github.com/tvcutsem/harmony-reflect](https://github.com/tvcutsem/harmony-reflect)
 *   Proxy spec: [developer.mozilla.org/en/docs/.../Proxy](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Proxy)

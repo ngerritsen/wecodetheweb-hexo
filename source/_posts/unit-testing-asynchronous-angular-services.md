@@ -57,7 +57,7 @@ function dataService($http) {
 }
 </pre>
 
-### Angular &amp; Angular Mocks
+## Angular &amp; Angular Mocks
 
 Let's step back for a moment. Angular has an extensive dependency injection system. In a nutshell it works as follows. There is a global _angular_ object that keeps track of all the modules and their components. If you make a module you can register it at Angular with [startCode]angular.module('module name', [/*deps*/])[endCode]. Then you can register components at that module with: [startCode]angular.module('module name').*componentType*.('component name', implementation)[endCode].
 
@@ -68,7 +68,7 @@ Angular Mocks (aka ngMock) is a library that provides you with all kinds of tool
 *   _$controller_, a service to get controller instances in your tests
 *   _$httpBackend_, a service to mock the behaviour of angular's _$http_ service in you tests
 
-### Building the tests
+## Building the tests
 
 So how do we go about testing our _iceCreamApp_? We could use the _$httpBackend _service provided by Angular Mocks simulate the _dataService's_ HTTP calls. But for now we <span style="text-decoration: underline;">only</span> want to test the _iceCreamService, _<span style="text-decoration: underline;">not</span> _dataService._ Using _$httpBackend_ would mean that we also depend on _dataService_ working properly, we don't want that in a unit test.
 > For this article I used Jasmine as a test framework. But you can use the same solution in any javascript test framework like Mocha or QUnit.
@@ -135,7 +135,7 @@ describe('when retrieving ice cream', function() {
   });
 });</pre>
 
-### Getting async
+## Getting async
 
 What happens in this test, is call the _iceCreamService_ with the _retrieveIceCream_ method and expect the _getAllIceCream_ method to have been called. But actually, when running this test, javascript will throw an error. Because if you look closely at the _iceCreamService_ it expects the _getAllIceCream_ method to return a promise:
 <pre class="lang:default decode:true">function retrieveIceCream() {
@@ -200,7 +200,7 @@ Then we resolve the promise with [startCode]flushGetAllIceCream(dummyData)[endCo
 
 As you can see you need quite some setup to test Angular services that asynchronously communicate with each other. But once you have it set up it's actually quite simple! Happy testing!
 
-### Reference
+## Reference
 
 *   AngularJS: [angularjs.org](https://angularjs.org/)
 *   Angular Mocks (ngMock): [docs.angularjs.org/api/ngMock](https://docs.angularjs.org/api/ngMock)

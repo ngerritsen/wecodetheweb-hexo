@@ -13,7 +13,7 @@ date: 2015-09-29 15:24:22
 **The [Flux](https://facebook.github.io/flux/) application design pattern is still going strong and gaining popularity. There are countless libraries around, helping you implement Flux. But lately, one has been standing out. <!-- more --> [Redux](http://rackt.github.io/redux/docs/introduction) is definitely the most simple implementation of Flux I have seen so far and it's very functional too, actually, it's just a bunch of functions!**
 > If you don't know about Flux yet, read my article about it: [Flux, what and why?](http://wecodetheweb.com/2015/08/22/flux-what-and-why/), or go and [Google some Flux...](http://lmgtfy.com/?q=Flux%20js)
 
-### Functions, functions everywhere
+## Functions, functions everywhere
 
 So what is _redux_ all about? Given, it's an implementation of Flux. But it looks quite different (all examples will be in ES6). We are going to cover the three basic concepts: the _store_, _reducers _and _actions_. Let's start with the _store_. So how do you create one in redux ?
 <pre class="lang:js decode:true">import { createStore } from 'redux'
@@ -52,14 +52,14 @@ So, how do we fire off this action? I mean, we need some money right?
 One line, that's it! [startCode]addMoney[endCode] will return an action object of type [startCode]ADD_MONEY[endCode] with an amount value of 1000000\. The store will pass that action to the reducer, which will determine the new state. This new state is then stored in the store and can be accessed like this:
 <pre class="lang:default decode:true">store.getState() // =&gt; 1000000</pre>
 
-### The cycle
+## The cycle
 
 So to recap. There are three main concepts in redux. The store, actions and reducers. Actions trigger state changes, the store holds the state and reducers calculate the next state. Here is a simplified scheme of how the redux cycle works:
 
 ![redux-cycle](http://wecodetheweb.com/wp-content/uploads/2015/09/redux-cycle.png)
 > Actions are triggered by either views, other actions or events/callbacks from, for instance, the server.
 
-### Getting serious
+## Getting serious
 
 That was pretty cool right? Not a lot of code, no magic, just simple Javascript functions. Notice how we only did one import from redux, just the _createStore_ method. Everything else is plain Javascript. But, especially when you already know Flux, this will raise some questions like:'_Only one store, how do I keep code manageble then?_', '_How do I wire this up to my views?_'. Well, let's answer at least these two questions.
 
@@ -105,7 +105,7 @@ store.dispatch(addMoney(500000))
 store.getState() // =&gt; { money: 500000, awesomeness: 0 }</pre>
 The store updates the state according to the action you pass to it. There are no weird side effects, just simple input output logic.
 
-### Wiring up React
+## Wiring up React
 
 So how do we wire the store up to a view? I mean, all this stuff is fun, but we want to interact with it right, otherwise what's the point? Let's do this example with, yes, React.
 
@@ -151,11 +151,11 @@ First we import the _connect_ function and the _Provider_ component from '_react
 
 At last we render our component into the DOM, but we wrap it in the _Provider_ component. We pass the _Provider_ component the store, the _Provider_ will now connect the '_connected_' components inside of it with the store. And that's it. Our component now updates when the state of the store changes.
 
-### Conclusion
+## Conclusion
 
 I think this is enough for this article. If you are confused right now, don't worry, it takes some time to get your head around the concept. It's a bit different from what you might be used to. There is a _lot_ more you can do with redux (like [middleware](http://rackt.github.io/redux/docs/advanced/Middleware.html), [debug tooling](https://github.com/gaearon/redux-devtools)) and it has a very vibrant community around it. The documentation of redux is very good and the library is maintained actively. The only way to learn more about it, is to <span style="text-decoration: underline;">play</span> with it! Happy playing!
 
-### Reference
+## Reference
 
 Redux documentation: [rackt.github.io/redux/docs/introduction](http://rackt.github.io/redux/docs/introduction)
 

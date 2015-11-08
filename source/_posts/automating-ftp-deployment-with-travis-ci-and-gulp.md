@@ -14,11 +14,11 @@ date: 2015-08-27 10:26:29
 
 <!-- more -->
 
-### Travis
+## Travis
 
 Travis is a Continuous Integration service that integrates with GitHub. You can sign in to Travis with your GitHub account, you can specify which repo's it should watch. When you push new changes those repo's, Travis gets the version of your project on their servers. It then executes the _.travis.yml_ build script that should be in your project's root.
 
-### Defining a build
+## Defining a build
 
 The only way to specify build tasks is in the _.travis.yml_ file. What can we specify? Well, for instance, we can set environment variables and run command line commands. It looks like this:
 
@@ -33,7 +33,7 @@ script:
 
 We set the environment to _node_js_, this is typical for front-end projects as npm and build tools like gulp all run on node. Then the 'install' tasks are executed. Tasks are just command line commands, so they can be anything, but here we run the typical npm and bower install commands. Then the 'script' tasks are executed, these are the actual build tasks. In this example it is a gulp build.
 
-### Adding FTP uploads
+## Adding FTP uploads
 
 This Travis build is nice and all, but these tasks are executed in a temporary virtual machine on Travis' server. What would be the use of this, if the output never leaves that virtual machine? Let's upload the result to our FTP server, so our website is updated:
 
@@ -59,7 +59,7 @@ after_success:
     "curl -T index.html -u $FTP_USER:$FTP_PASSWORD ftp://wecodetheweb.com/public_html/"
 ```
 
-### Using vinyl-ftp
+## Using vinyl-ftp
 
 This is all fine, but _curl_ is a bit limited in options. You have to add a command for each file, or combine them with the tedious _find_ command. No, as we allready use Gulp in this example project, why not add a gulp task for uploading the files an folders to FTP?
 
@@ -99,7 +99,7 @@ It's that simple :). First we create new ftp connection with _vinyl-ftp_. Becau
 
 > The _conn.newer(destination)_ method searches the destination for newer files, if there are newer files on the server then those files will not be uploaded with _conn.dest(destination)_.
 
-### Integrating with Travis
+## Integrating with Travis
 
 This is the simplest part. The only thing we have to do is replace the _curl_ command with our new gulp ftp command!
 
@@ -113,7 +113,7 @@ after_success:
 That was easy right! Setting up a Travis build can be challenging. But the result is rewarding, no more manual file copying to servers, just push to GitHub and in a few minutes your changes are live!
 ```
 
-### Reference
+## Reference
 
 *   Travis: [travis-ci.org](https://travis-ci.org)
 *   vinyl-ftp: [npmjs.com/package/vinyl-ftp](https://www.npmjs.com/package/vinyl-ftp)

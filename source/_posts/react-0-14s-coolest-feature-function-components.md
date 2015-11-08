@@ -50,7 +50,7 @@ Notice how ES6 really shines here, you can even use _[destructuring](https://d
 )</pre>
 There is another nice plus the React team mentioned. In the future, these components will be rendered more performant than '_normal_' components. Because they are more predictable React can remove some operations on them and render them more efficient.
 
-### Downsides
+## Downsides
 
 Currently, this feature has some downsides:
 
@@ -63,7 +63,7 @@ But the first point can also be seen as a plus. This type of component encourag
 
 So, I really like this feature, try it out. Happy coding!
 
-### Reference
+## Reference
 
 React 0.14 release notes: [facebook.github.io/react/blog/.../react-v0.14-rc1](https://facebook.github.io/react/blog/2015/09/10/react-v0.14-rc1.html)
 

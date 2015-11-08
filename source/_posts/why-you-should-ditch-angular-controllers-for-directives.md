@@ -15,27 +15,27 @@ date: 2015-07-18 08:02:52
 
 Since I ditched the controller + template way of building my Angular application for using only directives I found my applications to be more modular, fail safe and easy to read. I will give you some reasons why.
 
-### Isolation
+## Isolation
 
 Directives are self contained components and have an isolate scope. They have their own template which corresponds to their own scope. This way you will have to explicitly decide what data you pass into them which forces you to think of a solid, modular way of building your application.
 
-### Re-usable components
+## Re-usable components
 
 Building small directives with clear purposes makes your application easy to read and maintain. Directives encourage building re-useable components which can be moved around the whole application or even multiple applications.
 
-### Simplicity
+## Simplicity
 
 Only having one type of building block (a directive) makes your application simpler. Although directives are not the simplest AngularJS component, they are the most versatile and powerful.
 
-### Being future proof
+## Being future proof
 
 The web is moving towards a modular, component based approach to front-end applications, and so is AngularJS. AngularJS 2.0 will drop most current concepts and an Angular app will be composed of 'components'. Components are conceptually comparable to what directives are today, so it will be more easy to migrate to Angular 2.0 (or another component based frameworks).
 
-### No controllers anymore?
+## No controllers anymore?
 
 You can still use controllers, but only within a directive. Controllers are very useful because they can take advantage of the AngularJS dependency injection system to communicate with services or other dependencies. For more simple directives that only need data input from their parent, you can use the link or compile functions. However, as much business logic as possible needs to be moved to services or factories.
 
-### How about routing?
+## How about routing?
 
 Normally you would route to a certain controller and/or template. If you only have directives you obviously can't. One way is to accept that AngularJS routing (either AngularJS or UI Router) works this way and use templates for routes with directives in them. But, the way I like to do it is the following:
 <pre class="lang:js decode:true">//Inside of the app config
@@ -78,11 +78,11 @@ The parent view (in this case the settings directive) contains a _ui-view_ tag, 
 > Tip: prefix all your own directives to distinguish them from third parties or Angular's own directives. For instance if you would be building Facebook, prefix your directive names with '_-fb_'.
 Lately I refactored a medium size AngularJS web application at work. First I wrapped all controllers and their templates into directives and set up the routing. Then I split up all big directives into smaller directives and moved most business logic services. Then I put re-occuring functionality into re-usable directives. I immediately found the application more easy to understand and work with, my colleagues had the same experience.
 
-### Conclusion
+## Conclusion
 
 A directive should be seen as the main building block of an Angular application. Although directives seem a bit complicated at first, once you get the hang of it, they are actually make you application simpler. Directives enable you to build a modular, component based application. Just try it out and let me know what you think!
 
-### Reference
+## Reference
 
 *   AngularJS official documentation: [docs.angularjs.org/guide](https://docs.angularjs.org/guide)
 *   Inspiring article: [teropa.info/blog/how-ive-improved-my-angular-apps-by-banning-ng-controller](http://teropa.info/blog/2014/10/24/how-ive-improved-my-angular-apps-by-banning-ng-controller.html)
