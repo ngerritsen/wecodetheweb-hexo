@@ -38,7 +38,9 @@ You can still use controllers, but only within a directive. Controllers are very
 ## How about routing?
 
 Normally you would route to a certain controller and/or template. If you only have directives you obviously can't. One way is to accept that AngularJS routing (either AngularJS or UI Router) works this way and use templates for routes with directives in them. But, the way I like to do it is the following:
-<pre class="lang:js decode:true">//Inside of the app config
+
+```javascript
+//Inside of the app config
 $stateProvider
     .state('chat', {
       url: '/chat',
@@ -52,11 +54,15 @@ $stateProvider
 <pre class="lang:xhtml decode:true"><!--Inside of index.html-->
 <body ng-app="ChatApp">
   <ui-view></ui-view>
-</body></pre>
+</body>
+```
+
 In the route configuration (in this example I use UI Router, but it can also be Angular's own router), I just insert the directive tag as a template. This might be considered bad practice by some and you should keep a policy where an inline template in a route may only be one directive. This prevents you from misusing this approach.
 
 How about nested routes? Same way:
-<pre class="lang:js decode:true">//Inside of the app config
+
+```javascript
+//Inside of the app config
 $stateProvider
     .state('settings', {
       url: '/settings',
@@ -66,15 +72,21 @@ $stateProvider
       url: '/general',
       template: '<settings-general></settings-general>'
     })
-    //etc..</pre>
-<pre class="lang:xhtml decode:true"><!--Inside of the settings directive template-->
+    //etc..
+```
+
+```html
+<!--Inside of the settings directive template-->
 <ul class="settings-menu">
     <li><a ui-sref="settings.general"></a>
     <li><a ui-sref="settings.advanced"></a>
 </ul>
 
-<ui-view></ui-view></pre>
+<ui-view></ui-view>
+```
+
 The parent view (in this case the settings directive) contains a _ui-view_ tag, in which the sub view ( the _settings-general_ directive) will be rendered if the current active route is _settings.general_.
+
 > Tip: prefix all your own directives to distinguish them from third parties or Angular's own directives. For instance if you would be building Facebook, prefix your directive names with '_-fb_'.
 Lately I refactored a medium size AngularJS web application at work. First I wrapped all controllers and their templates into directives and set up the routing. Then I split up all big directives into smaller directives and moved most business logic services. Then I put re-occuring functionality into re-usable directives. I immediately found the application more easy to understand and work with, my colleagues had the same experience.
 

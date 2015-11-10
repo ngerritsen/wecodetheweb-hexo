@@ -25,27 +25,28 @@ The web used to be HTML with CSS and maybe some Javascript magic on top of it. F
 
 How about SOLID principles? I'm not going to line them up here because there is tons of lecture on that out there. They are basically a set of principles that make you aware of and give you guidelines to make sure that your code is maintainable and extendable. These principles are widely adopted by the software development world and I think it would be very useful to raise more awareness of these principles in the front-end world.
 
-## DRY![dontrepeatyourself1](http://wecodetheweb.com/wp-content/uploads/2015/07/dontrepeatyourself1.jpg)
+## DRY!
 
 Don't repeat yourself, this is a principle that applies to any language, even to CSS or (generated) HTML! Instead of doing the same thing (slightly different) twice, it might be wise to create one functionality and use it twice, different languages or environments will have different ways of achieving this. Instead of filling _div.button_ and _div.button-large_ with _background-color: green,_ it could be more DRY to create a class '_button-success_' and use that in both. It's just a simple example but you get the point, not repeating yourself makes your code easier to maintain.
 
-&nbsp;
+[dontrepeatyourself1](http://wecodetheweb.com/wp-content/uploads/2015/07/dontrepeatyourself1.jpg)
 
 ## TDD
 
-TDD is something that does exist for a while in the front-end world and was highly popularized by the AngularJS team. Unit tests are tests that test a single component of your code. That could be a React class or an AngularJS service for instance. You test the behavior (mostly input and output) of a component, but preferably not the inner workings. If you change the code of a component, but in the end it does the exact same thing, the same tests should still succeed. Popular testing frameworks for Javascript are [Jasmine ](http://jasmine.github.io/)and [Mocha](http://unitjs.com/guide/mocha.html).
+TDD is something that does exist for a while in the front-end world and was highly popularized by the AngularJS team. Unit tests are tests that test a single component of your code. That could be a React class or an AngularJS service for instance. You test the behavior (mostly input and output) of a component, but preferably not the inner workings. If you change the code of a component, but in the end it does the exact same thing, the same tests should still succeed. Popular testing frameworks for Javascript are [Jasmine](http://jasmine.github.io/) and [Mocha](http://unitjs.com/guide/mocha.html).
 
 ## Style
 
 Coding style is also important. Code itself is read more then it is written, so it is very important that it is readable. You can save time and errors by spending a little extra time on code style. Some subjects you should for instance pay attention to are: naming, naming conventions, punctuation, file size, line width etc... Even more important than the styling rules them self, is to communicate them with your team and stick to them! A style rule has no value if nobody follows it.
-<pre class="lang:default decode:true">//Brain food, which one is better?
+```javascript
+//Brain food, which one is better?
 
 var w = "i'm Niels!";
 var welcome = "i'm Niels!";
 var message = "i'm Niels!";
 var welcomeMessage = "i'm Niels!";
+```
 
-</pre>
 The above example is a nice one to think about. It is obvious that the first one is bad, the second one is also a bit, mehh, it does not really describe what we're dealing with. Number 3 and 4 are better. However, it depends on the context which one you would use. Are you currently in a context where it is clear that we are welcoming someone (for instance a welcome screen), then it might be enough to call the variable just '_message_'. If you would call it _welcomeMessage_ it might raise questions, are there more messages? But, if you have multiple different messages in the same context, it will actually be useful to know that this is the _welcomeMessage_. Are you bearing with me? Right now it is not important which one is better. I want to show you that style and details are important, because let's face it, you are reading a whole paragraph about one variable name!
 
 ## Literature
@@ -63,13 +64,8 @@ The goal of this article is not to give you a guide on front-end code style, or 
 ## Reference
 
 - Pillars of high quality code (a blog series from an ex colleague): [michielvandermeer.com/pillars-of-high...](http://michielvandermeer.com/pillars-of-high-quality-code-introduction/)
-
 - Clean code: [amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882](http://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882/ref=pd_bxgy_14_img_y)
-
 - Agile software principles, practices and patterns: [amazon.com/gp/product/0131857258](http://www.amazon.com/gp/product/0131857258/ref=pd_lpo_sbs_dp_ss_2?pf_rd_p=1944687442&amp;pf_rd_s=lpo-top-stripe-1&amp;pf_rd_t=201&amp;pf_rd_i=0135974445&amp;pf_rd_m=ATVPDKIKX0DER&amp;pf_rd_r=1EMYH9XHDMWW2WCNRF3Q)
-
 - EcmaScript 6 style guide by Elie Rotenberg: [github.com/elierotenberg/coding-styles/blob/master/es6.md](https://github.com/elierotenberg/coding-styles/blob/master/es6.md)
-
 - AngularJS style guide by John Papa: [github.com/johnpapa/angular-styleguide](https://github.com/johnpapa/angular-styleguide)
-
 - React style guide by David Chang: [reactjsnews.com/react-style-guide-patterns-i-like](https://reactjsnews.com/react-style-guide-patterns-i-like/)
