@@ -8,6 +8,8 @@ subtitle: Brainfood for front-end developers
 description: A blog about front-end/web development, brainfood for front-end developers.
 author: Niels Gerritsen
 language: English
+locale: en_EN
+type: blog
 timezone:
 
 # URL
