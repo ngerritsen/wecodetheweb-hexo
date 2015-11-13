@@ -80,7 +80,7 @@ store.getState() // => 1000000
 
 So to recap. There are three main concepts in redux. The store, actions and reducers. Actions trigger state changes, the store holds the state and reducers calculate the next state. Here is a simplified scheme of how the redux cycle works:
 
-![redux-cycle](http://wecodetheweb.com/wp-content/uploads/2015/09/redux-cycle.png)
+![redux-cycle](redux-cycle.png)
 
 > Actions are triggered by either views, other actions or events/callbacks from, for instance, the server.
 

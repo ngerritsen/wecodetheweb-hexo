@@ -80,7 +80,7 @@ We have now created a usable icon insertion method in our own webpage. Now rend
 <a href="http://some-external-link.com" class="web-link">Some external link</a>
 ```
 
-[![External icon link](http://wecodetheweb.com/wp-content/uploads/2015/05/Schermafbeelding-2015-05-25-om-10.49.34.png)](http://wecodetheweb.com/wp-content/uploads/2015/05/Schermafbeelding-2015-05-25-om-10.49.34.png)
+![External icon link](result.png)
 
 FontAwesome already provides you with a [FontAwesome SASS project](https://github.com/FortAwesome/font-awesome-sass), containing all the icons and mixins like we just created. But we have now learned how this works and can create our own mixins, suiting our needs and using other icon sets. For instance Bootstrap Glyphicons will work almost the same except for other character codes and using the _'Glyphicon Halflings'_ font instead of _'FontAwesome'_.
 
