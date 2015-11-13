@@ -77,6 +77,7 @@ propTypes: {
 So what happens if you do not conform to the defined _propTypes_? Well if you provide a prop of the wrong type or don't provide a required prop, React will log a warning to the console at runtime. React will only do this when you are in a development environment (defined by the global _NODE_ENV_ variable) to save performance in production.
 
 > You can use envify to set the NODE_ENV variable. It is a global environment variable used by a lot of nodejs applications. You could have a seperate dev and production gulp task. In the production build you would set NODE_ENV to 'production'. For more information: [npmjs.com/package/envify](https://www.npmjs.com/package/envify).
+
 The _propTypes_ object kind of defines the _'interface'_ for using a component. Always put it near the top of your component. Define a prop in the propTypes before you write any code using the actual prop. This prevents you from forgetting and makes you more aware of the _'dependencies'_ your component has to external data.
 
 I think _'propTypes'_ is one of the strongest features of React. It also shows that the developers of React care and they want it to be a professional framework. Although _propTypes_ are optional, you should always use them!

@@ -88,6 +88,7 @@ $stateProvider
 The parent view (in this case the settings directive) contains a _ui-view_ tag, in which the sub view ( the _settings-general_ directive) will be rendered if the current active route is _settings.general_.
 
 > Tip: prefix all your own directives to distinguish them from third parties or Angular's own directives. For instance if you would be building Facebook, prefix your directive names with '_-fb_'.
+
 Lately I refactored a medium size AngularJS web application at work. First I wrapped all controllers and their templates into directives and set up the routing. Then I split up all big directives into smaller directives and moved most business logic services. Then I put re-occuring functionality into re-usable directives. I immediately found the application more easy to understand and work with, my colleagues had the same experience.
 
 ## Conclusion
