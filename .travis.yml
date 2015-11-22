@@ -4,10 +4,8 @@ install:
 - npm install -g hexo gulp
 - cd themes/wecodetheweb
 - npm install
-before_script:
-- cd themes/wecodetheweb
-- npm run build
 script:
+- cd themes/wecodetheweb && npm run build && ../..
 - hexo generate
 env:
   global:
