@@ -6,7 +6,9 @@ install:
 - npm install
 script:
 - ls
-- npm run build
+- npm run build:assets
+- ls
+- hexo generate
 env:
   global:
   - secure: vtu6V9qzdsre15YluJsPrWas9cdvu4W3bIqTIgd4bCEZv2KlSr51ZZIFmejUixgY3wzyxupphzYsWjwFafoHHmXL9R/AHB7mLMOJLcBrNV3szMjk4S7r+xed67EWoQ/FghG+h27lc6BlJinH+v3UzQiOtZmuAFCfGN9ywk6DMgJa4svwY1Y/zfHxmMLtZPgsTeHZWy9IlEqBkFQ73HFJzYsj4PwNt90jFz7tWsvkVnOkQ2VEOrIW+KNLrPEm5p8lu7OuTCfNE4+vb0432cOCVh6XJQ/02OX9leNhOVQC81VPxoaYradRhsYpwMBue/y8ZZMgZnt7OOBPHViQ6Vo8ksFdaW0O20Ro/u/Q66dsYxD7EDyhm2qWcvu9EMkluEybMi+SdifuMxA2fLD+lmBuocvi6mA6hWRkP9gFAy6NHMV9KrDu0afXkghTJditqry7HzgFdf8Fu46hTHkQ3Q3V4YMO34+OoCvv58eOvcIFw2ggbXkOzOhtinf5jNO0JmNlUHOnp7oBuvwfFS5+beTLI41XZ3NMU3jJ0Li78k6JXBuSH+tjiY0pD1mpY1Rk4vkCwnhIGnustx2BAH/AmgctYVaK5DrcTy+iJUrUoLrfGIkSTuCzGYwtsYoeJYPz75hIAvXrDcN/jvQ2sW0GDD6RNxbR/pZCqAQDgSBJ0mBua3c=
