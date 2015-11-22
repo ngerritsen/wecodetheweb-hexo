@@ -15,4 +15,4 @@ gulp.task('deploy', function() {
   gulp.src(['./public/**'])
     .pipe(conn.newer(remotePath))
     .pipe(conn.dest(remotePath));
-};
+});

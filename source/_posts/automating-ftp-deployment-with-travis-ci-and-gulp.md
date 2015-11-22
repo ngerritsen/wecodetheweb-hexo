@@ -92,7 +92,7 @@ gulp.task('deploy', function() {
   gulp.src(['index.html', './**/*.css'])
     .pipe(conn.newer(remotePath))
     .pipe(conn.dest(remotePath));
-};
+});
 ```
 
 It's that simple :). First we create new ftp connection with _vinyl-ftp_. Because we use gulp, we can now use glob patterns to gather the files to upload with gulp.src. Then, by piping the globs to the ftp connection, _vinyl-ftp_ will automatically uploads all those files and creates missing folders on the server if needed. This task can now be run from the command line like: *gulp deploy --user 'coolUser' --password 'mySecretPassword'*.
