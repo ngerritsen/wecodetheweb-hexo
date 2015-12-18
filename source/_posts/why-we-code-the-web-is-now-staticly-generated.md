@@ -20,7 +20,7 @@ But there are a few problems. One is that Wordpress can be unpredictable, after 
 
 And last but not least Wordpress can be quite slow. Consumer grade web hosting servers (like the one I use), are often not very fast. Remember that every time a user requests a page, the server has to generate that page with PHP and then send it back. There are plugins like [WP Supercache](https://nl.wordpress.org/plugins/wp-super-cache/) that partially solve this by caching that page, but still, the PHP code has to run and that gives extra delay.
 
-Here's a nice performance measurement I did with [Securi](https://performance.sucuri.net) that Smashing Magazine also did for an [article](http://www.smashingmagazine.com/2015/11/modern-static-website-generators-next-big-thing/) about static website generation with their website.
+Here's a performance measurement I did with [Securi](https://performance.sucuri.net) that Smashing Magazine also did for an [article](http://www.smashingmagazine.com/2015/11/modern-static-website-generators-next-big-thing/) about static website generation with their website.
 
 ![Smashing Magazine dynamic loading speeds](smashing-mag-dynamic.png "Smashing Magazine dynamic loading speeds")
 _Dynamic loading speeds are okay, but not that fast..._
@@ -80,7 +80,7 @@ This is all very nice and it works well for blogs, but there are some cons.
 - You have to do asset management (like images) yourself
 - You have to do version control for the content yourself, for instance with [git](https://git-scm.com/)
 
-This seems like there are a lot of cons. But for a regular blog and a blogger with some technical knowledge, these cons are no real drawback. Also, using markdown is a breeze and there are a lot of editors out there. At least, I'm happy with it and I hope you like the result!
+This seems like there are a lot of cons. But for a regular blog and a blogger with some technical knowledge, these cons are no real drawbacks. Also, using markdown is a breeze and there are a lot of editors out there. At least, I'm happy with it and I hope you like the result!
 
 ## Reference
 
