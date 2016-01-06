@@ -18,12 +18,15 @@ date: 2015-09-29 15:24:22
 
 ## Functions, functions everywhere
 
-So what is _redux_ all about? Given, it's an implementation of Flux. But it looks quite different (all examples will be in ES6). We are going to cover the three basic concepts: the _store_, _reducers _and _actions_. Let's start with the _store_. So how do you create one in redux ?
+So what is _redux_ all about? Given, it's an implementation of Flux. But it looks quite different (all examples will be in ES6). We are going to cover the three basic concepts: the _store_, _reducers_ and _actions_. Let's start with the _store_. So how do you create one in redux ?
 
 ```javascript
 import { createStore } from 'redux'
 
-let store = createStore(reducer)</pre>
+let store = createStore(reducer)
+```
+
+```javascript
 Yes, just one line (excluding the import). And this is the last store you will need, yes, only one. Your  application will have one store with one big object containing you application state. So what is that _reducer_ all about?
 <pre class="lang:default decode:true">function reducer(state, action) {
   //modify state
