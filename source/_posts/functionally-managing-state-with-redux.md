@@ -26,9 +26,10 @@ import { createStore } from 'redux'
 let store = createStore(reducer)
 ```
 
-```javascript
 Yes, just one line (excluding the import). And this is the last store you will need, yes, only one. Your  application will have one store with one big object containing you application state. So what is that _reducer_ all about?
-<pre class="lang:default decode:true">function reducer(state, action) {
+
+```javascript
+function reducer(state, action) {
   //modify state
   return state
 }
