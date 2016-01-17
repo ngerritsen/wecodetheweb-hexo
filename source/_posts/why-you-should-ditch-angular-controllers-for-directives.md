@@ -42,16 +42,19 @@ Normally you would route to a certain controller and/or template. If you only ha
 ```javascript
 //Inside of the app config
 $stateProvider
-    .state('chat', {
-      url: '/chat',
-      //Using the directive tag as a route template
-      template: '<chat></chat>'
-    })
-    .state('settings', {
-      url: '/settings',
-      template: '<settings></settings>'
-    });</pre>
-<pre class="lang:xhtml decode:true"><!--Inside of index.html-->
+  .state('chat', {
+    url: '/chat',
+    //Using the directive tag as a route template
+    template: '<chat></chat>'
+  })
+  .state('settings', {
+    url: '/settings',
+    template: '<settings></settings>'
+  });
+```
+
+```html
+<!--Inside of index.html-->
 <body ng-app="ChatApp">
   <ui-view></ui-view>
 </body>
@@ -64,22 +67,22 @@ How about nested routes? Same way:
 ```javascript
 //Inside of the app config
 $stateProvider
-    .state('settings', {
-      url: '/settings',
-      template: '<settings></settings >'
-    })
-    .state('settings.general', {
-      url: '/general',
-      template: '<settings-general></settings-general>'
-    })
-    //etc..
+  .state('settings', {
+    url: '/settings',
+    template: '<settings></settings >'
+  })
+  .state('settings.general', {
+    url: '/general',
+    template: '<settings-general></settings-general>'
+  })
+  //etc..
 ```
 
 ```html
 <!--Inside of the settings directive template-->
 <ul class="settings-menu">
-    <li><a ui-sref="settings.general"></a>
-    <li><a ui-sref="settings.advanced"></a>
+  <li><a ui-sref="settings.general"></a>
+  <li><a ui-sref="settings.advanced"></a>
 </ul>
 
 <ui-view></ui-view>

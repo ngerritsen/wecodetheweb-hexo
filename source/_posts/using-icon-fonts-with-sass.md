@@ -17,7 +17,7 @@ Sometimes you want to display an icon in your website somewhere, but you do not 
 Most of the times they let you add icons with an HTML tag like this:
 
 ```html
-<i class="fa fa-rocket"></i></pre>
+<i class="fa fa-rocket"></i>
 ```
 
 This is how you would add a rocket icon in font-awesome. As you can see it is an _'i'_ element with two classes. The element type does not really matter, but the classes do. The first class _'fa'_ adds the base style rules for adding an icon. If we check out the [FontAwesome GitHub project](https://github.com/FortAwesome/Font-Awesome):

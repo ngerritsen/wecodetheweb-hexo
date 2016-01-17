@@ -93,7 +93,7 @@ Make sub folders if a folder becomes too large. Let's say you have a common feat
         /user-input
             *buttons, input elements etc...*
         /utility
-            *utility functions*</pre>
+            *utility functions*
 ```
 
 ## Assets and bower

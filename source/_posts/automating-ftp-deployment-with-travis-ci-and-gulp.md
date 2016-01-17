@@ -28,7 +28,7 @@ install:
   - npm install
   - bower install
 script:
-  - gulp build</pre>
+  - gulp build
 ```
 
 We set the environment to _node_js_, this is typical for front-end projects as npm and build tools like gulp all run on node. Then the 'install' tasks are executed. Tasks are just command line commands, so they can be anything, but here we run the typical npm and bower install commands. Then the 'script' tasks are executed, these are the actual build tasks. In this example it is a gulp build.
@@ -109,9 +109,10 @@ env:
     - secure: fjlZRoknWj6+UA8U65B+TZmFQv71PdsIc..
     - secure: XDdTZHvlVWMjpYgzMPKIEeRu+8namsdex..
 after_success:
-  gulp deploy --user $FTP_USER --password $FTP_PASSWORD</pre>
-That was easy right! Setting up a Travis build can be challenging. But the result is rewarding, no more manual file copying to servers, just push to GitHub and in a few minutes your changes are live!
+  gulp deploy --user $FTP_USER --password $FTP_PASSWORD
 ```
+
+That was easy right! Setting up a Travis build can be challenging. But the result is rewarding, no more manual file copying to servers, just push to GitHub and in a few minutes your changes are live!
 
 ## Reference
 

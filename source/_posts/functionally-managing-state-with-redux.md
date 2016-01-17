@@ -124,9 +124,13 @@ function mainReducer(state = {}, action) {
   }
 }
 
-let store = createStore(mainReducer)</pre>
+let store = createStore(mainReducer)
+```
+
 This will result in both reducers output being combined into one object. We could also use a helper provided by redux:
-<pre class="lang:default decode:true">import { combineReducers, createStore } from 'redux'
+
+```javascript
+import { combineReducers, createStore } from 'redux'
 
 let store = createStore(combineReducers({
   money: moneyReducer
@@ -152,7 +156,7 @@ So how do we wire the store up to a view? I mean, all this stuff is fun, but we
 
 First we create a React Component:
 
-```
+```javascript
 import React, { Component }  from 'react'
 import { connect, Provider } from 'react-redux'
 

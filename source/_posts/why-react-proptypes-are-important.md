@@ -12,19 +12,19 @@ _Props_ are the mechanism _React_ uses to let components communicate with each
 
 ```javascript
 const ChildComponent = React.createClass({
-    render() {
-        return (
-            <p>
-                <i>{this.props.id}</i>: {this.props.message}
-            </p>
-        );
-    }
+  render() {
+    return (
+      <p>
+        <i>{this.props.id}</i>: {this.props.message}
+      </p>
+    );
+  }
 });
 
 const ParentComponent = React.createClass({
-    render() {
-        return <ChildComponent message="Narwhal" id={3}/>;
-    }
+  render() {
+      return <ChildComponent message="Narwhal" id={3}/>;
+  }
 });
 ```
 
@@ -37,14 +37,14 @@ This is where Reacts _propTypes_ come in. It's essentially a dictionary where yo
 ```javascript
 const ChildComponent = React.createClass({
     propTypes: {
-        message: React.PropTypes.string.isRequired
-        id: React.PropTypes.number.isRequired
+      message: React.PropTypes.string.isRequired
+      id: React.PropTypes.number.isRequired
     }
     render() {
-        return (
-            <p>
-                <i>{this.props.id}</i>: {this.props.message}
-            </p>
+      return (
+        <p>
+          <i>{this.props.id}</i>: {this.props.message}
+        </p>
         );
     }
 });
@@ -54,29 +54,29 @@ _ChildComponent_ does exactly the same as before, however, your fellow develope
 
 ```javascript
 propTypes: {
-    //Id can be a number, or a string, but it needs to be defined!
-    id: React.PropTypes.oneOfType([
-        React.PropTypes.number,
-        React.PropTypes.string
-    ]).isRequired,
+  //Id can be a number, or a string, but it needs to be defined!
+  id: React.PropTypes.oneOfType([
+    React.PropTypes.number,
+    React.PropTypes.string
+  ]).isRequired,
 
-   //Messages should be an object with a title and text property of type string
-    message: React.PropTypes.shape({  
-        title: React.PropTypes.string,
-        text: React.PropTypes.string
-    }).isRequired,
+ //Messages should be an object with a title and text property of type string
+  message: React.PropTypes.shape({  
+    title: React.PropTypes.string,
+    text: React.PropTypes.string
+  }).isRequired,
 
-    //The comments property needs to be an array of objects.
-    comments: React.PropTypes.arrayOf(React.PropTypes.object),
+  //The comments property needs to be an array of objects.
+  comments: React.PropTypes.arrayOf(React.PropTypes.object),
 
-    //The date needs to be an instance of type Date.
-    date: React.PropTypes.instanceOf(Date)
+  //The date needs to be an instance of type Date.
+  date: React.PropTypes.instanceOf(Date)
 }
 ```
 
-So what happens if you do not conform to the defined _propTypes_? Well if you provide a prop of the wrong type or don't provide a required prop, React will log a warning to the console at runtime. React will only do this when you are in a development environment (defined by the global _NODE_ENV_ variable) to save performance in production.
+So what happens if you do not conform to the defined _propTypes_? Well if you provide a prop of the wrong type or don't provide a required prop, React will log a warning to the console at runtime. React will only do this when you are in a development environment (defined by the global *NODE_ENV* variable) to save performance in production.
 
-> You can use envify to set the NODE_ENV variable. It is a global environment variable used by a lot of nodejs applications. You could have a seperate dev and production gulp task. In the production build you would set NODE_ENV to 'production'. For more information: [npmjs.com/package/envify](https://www.npmjs.com/package/envify).
+> You can use envify to set the *NODE_ENV* variable. It is a global environment variable used by a lot of nodejs applications. You could have a seperate dev and production gulp task. In the production build you would set *NODE_ENV* to 'production'. For more information: [npmjs.com/package/envify](https://www.npmjs.com/package/envify).
 
 The _propTypes_ object kind of defines the _'interface'_ for using a component. Always put it near the top of your component. Define a prop in the propTypes before you write any code using the actual prop. This prevents you from forgetting and makes you more aware of the _'dependencies'_ your component has to external data.
 

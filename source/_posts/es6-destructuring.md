@@ -16,9 +16,9 @@ What destructuring does is it can extract seperate variables from an object or a
 
 ```javascript
 const person = {
-    name: 'John',
-    age: 25,
-    interests: ['programming', 'music', 'fitness']
+  name: 'John',
+  age: 25,
+  interests: ['programming', 'music', 'fitness']
 }
 ```
 
@@ -38,9 +38,13 @@ You can also specify new variable names:
 const {name: personName, age: yearsOld} = person;
 
 console.log(personName); // => 'John';
-console.log(yearsOld); // => 25;</pre>
+console.log(yearsOld); // => 25;
+```
+
 Arrays work the same, except the output is controlled by the order of the array, instead of the key names:
-<pre class="lang:default decode:true">const [interest1, interest2] = person.interests;
+
+```javascript
+const [interest1, interest2] = person.interests;
 
 console.log(interest1); // => 'programming'
 console.log(interest2); // => 'music'
@@ -50,9 +54,9 @@ The array version is only useful if you know the order of the array, it can for 
 
 ```javascript
 function getPosition() {
-    const posX = 5;
-    const posY = 3;
-    return [posX, posY];
+  const posX = 5;
+  const posY = 3;
+  return [posX, posY];
 }
 
 const [x, y] = getPosition();
@@ -71,13 +75,13 @@ Personally I use destructuring a lot when accessing the props or state object in
 
 ```javascript
 render() {
-    return (
-        <div>
-            <h1>{this.props.title}</h1>
-            <img src={this.props.image.url} alt={this.props.image.title}/>
-            <p>{this.props.content}</p>
-        </div>
-    );
+  return (
+    <div>
+      <h1>{this.props.title}</h1>
+      <img src={this.props.image.url} alt={this.props.image.title}/>
+      <p>{this.props.content}</p>
+    </div>
+  );
 }
 ```
 
@@ -85,14 +89,14 @@ with destructuring:
 
 ```javascript
 render() {
-    const {title, content, image} = this.props;
-    return (
-        <div>
-            <h1>{title}</h1>
-            <img src={image.url} alt={image.title}/>
-            <p>{content}</p>
-        </div>
-    );
+  const {title, content, image} = this.props;
+  return (
+    <div>
+      <h1>{title}</h1>
+      <img src={image.url} alt={image.title}/>
+      <p>{content}</p>
+    </div>
+  );
 }
 ```
 
