@@ -17,7 +17,7 @@ This seems to be quite a big statement against the front-end world, but don't ge
 
 The web used to be HTML with CSS and maybe some Javascript magic on top of it. Front-end coding principles became very popular when [Zen Garden](http://www.csszengarden.com/) and [SMACSS](https://smacss.com/) came up with CSS guidelines, showing the power of seperation of concerns. Also the whole [Semantic Web](https://en.wikipedia.org/wiki/Semantic_Web) standards trend had a big impact. HTML and CSS are covered. But what about Javascript? The basic good and bad practices are well-known but still neglected by some front-end developers. Also a lot of front-end developers (like me) did not follow a specific software development study, so they did not learn general software principles at school. Therefore I also believe that working together with a bunch of experienced developers is very useful.
 
-## ![Spaghetti vs clean code](clean-code.jpg)
+## ![Spaghetti vs clean code](/2015/07/08/software-principles-in-front-end-development/clean-code.jpg)
 
 &nbsp;
 
@@ -29,7 +29,7 @@ How about SOLID principles? I'm not going to line them up here because there is 
 
 Don't repeat yourself, this is a principle that applies to any language, even to CSS or (generated) HTML! Instead of doing the same thing (slightly different) twice, it might be wise to create one functionality and use it twice, different languages or environments will have different ways of achieving this. Instead of filling _div.button_ and _div.button-large_ with _background-color: green,_ it could be more DRY to create a class '_button-success_' and use that in both. It's just a simple example but you get the point, not repeating yourself makes your code easier to maintain.
 
-![dontrepeatyourself1](http://wecodetheweb.com/wp-content/uploads/2015/07/dontrepeatyourself1.jpg)
+![dontrepeatyourself](/2015/07/08/software-principles-in-front-end-development/dontrepeatyourself.jpg)
 
 ## TDD
 

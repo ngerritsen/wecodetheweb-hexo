@@ -22,10 +22,10 @@ And last but not least Wordpress can be quite slow. Consumer grade web hosting s
 
 Here's a performance measurement I did with [Securi](https://performance.sucuri.net) that Smashing Magazine also did for an [article](http://www.smashingmagazine.com/2015/11/modern-static-website-generators-next-big-thing/) about static website generation with their website.
 
-![Smashing Magazine dynamic loading speeds](smashing-mag-dynamic.png "Smashing Magazine dynamic loading speeds")
+![Smashing Magazine dynamic loading speeds](/2015/12/17/why-we-code-the-web-is-now-staticly-generated/smashing-mag-dynamic.png "Smashing Magazine dynamic loading speeds")
 _Dynamic loading speeds are okay, but not that fast..._
 
-![Smashing Magazine static loading speeds](smashing-mag-static.png "Smashing Magazine static loading speeds")
+![Smashing Magazine static loading speeds](/2015/12/17/why-we-code-the-web-is-now-staticly-generated/smashing-mag-static.png "Smashing Magazine static loading speeds")
 _Static loading speeds are much faster as you can see!_
 
 ## Generate all the things!
@@ -65,7 +65,7 @@ The above piece of code will render the _post.ejs_ template for each post there 
 
 So how does this all come together? We now have a theme with a bunch of templates and maybe some CSS + Javascript to make it all nice and shiny. Also we have a folder with some markdown files containing the posts. This is where Hexo comes in. We can now run _"hexo generate"_ from the terminal  to generate the whole website. Yes, every page as a seperate HTML file. Hexo will just output this somewhere in a folder and boom, we are done.
 
-![Static website generation with Hexo flow chart](static-website-generation-hexo.png "Static website generation with Hexo")
+![Static website generation with Hexo flow chart](/2015/12/17/why-we-code-the-web-is-now-staticly-generated/static-website-generation-hexo.png "Static website generation with Hexo")
 
 We now just have our website in a folder and we can test it locally, or upload it to a web host. It doesn't matter, it's just HTML! It will also be very fast! As soon as the user enters a page, the web server can immidiately serve the HTML, without any processing!
 

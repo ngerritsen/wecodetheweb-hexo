@@ -22,7 +22,7 @@ Flux was presented by Facebook in combination with [React](http://facebook.githu
 
 > The reason why React works so well with Flux is because it also follows the unidirectional data flow principle. Frameworks like AngularJS use concepts like two way databinding which violate this principle.
 
-![image](http://wecodetheweb.com/wp-content/uploads/2015/08/image.jpg)
+![Flux architecture](/2015/08/22/flux-what-and-why/flux-architecture.png)
 
 ## Actions
 
