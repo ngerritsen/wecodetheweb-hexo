@@ -7,7 +7,7 @@ tags:
 id: 300
 categories:
   - Uncategorized
-date: 2016-01-23 15:00:00
+date: 2016-01-23 18:57:00
 ---
 __Using Redux is a nice way code structured, testable Javascript applications. But there's still one thing that can prove to be a challenge, asynchronous operations.__
 
@@ -120,11 +120,15 @@ store.dispatch(saveScore(9001))
 
 But then your Action creators still need to pass a callback along with the Action. So although they are now vanilla actions again, to test their behaviour you still need to do all the mocking.
 
+> Middleware runs every time an action enters the store, before it reaches the reducer. Middleware is mostly used to perform generic operations on certain or all actions, like logging or doing requests.
+
 ## A Saga
 
 [Redux-saga](https://github.com/yelouafi/redux-saga) has a real nice solution for this issue. It separates the async logic from the action by putting it into '_Sagas_'. Sagas can be seen as little stories that _describe_ the _behaviour_ of one or more Actions.
 
-Sagas work like daemons that run in the background. redux-sagas middleware runs and controls these Sagas. The Sagas themselves are ES6 _generator functions_, this allows redux-saga to have control over every single step the Saga does. This is how the Saga for our action would look:
+Sagas work like daemons that run in the background. Redux-saga's '_sagaMiddleware_' runs and controls these Sagas. The Sagas themselves are ES6 _generator functions_, this allows redux-saga to have control over every single step the Saga does.
+
+This is how the Saga for our action would look:
 
 ```javascript
 function* saveScoreSaga () {
@@ -256,7 +260,7 @@ Now, when the *SAVE_SCORE* action is retrieved, the _watchSaveScoreSaga_ will ca
 
 > You only need to register the Sagas that actually _take_ actions. The others can be considered 'sub' Sagas, only called by others.
 
-## Why not use ES7/2016 async await?
+## Why not use ES2016/Next async await?
 
 _Async functions_ are a new feature coming to the next version of EcmaScript. They are currently in _stage-3_, meaning they are a candidate for the next version. They work as follows:
 
@@ -275,7 +279,7 @@ This function is marked as asynchronous by the `async` keyword. As soon as the t
 
 ## Conclusion
 
-Sagas are _awesome_, they are a really nice way of doing async in redux. There are even more features I did not cover, like composing multiple Sagas. It might be confusing at first, but once you start trying Sagas out it all starts to make sense. There are other implementations out there for handling side effects, like [redux-side-effect](https://github.com/gregwebs/redux-side-effect), [redux-effects](https://github.com/redux-effects/redux-effects) and [redux-loop](https://github.com/RaiseMarketplace/redux-loop). But, in my opinion, none of them solves it as elegantly as redux-saga. Happy coding!
+Sagas are _awesome_, they are a really nice way of doing async in redux. They succeed at seperating concerns and making testing really easy. It might be confusing at first, but once you start trying Sagas out it all starts to make sense. There are other implementations out there for handling side effects, like [redux-side-effect](https://github.com/gregwebs/redux-side-effect), [redux-effects](https://github.com/redux-effects/redux-effects) and [redux-loop](https://github.com/RaiseMarketplace/redux-loop). But, in my opinion, none of them solves it as elegantly as redux-saga. Happy coding!
 
 ## Reference
 - Redux-saga: [github.com/yelouafi/redux-saga](https://github.com/yelouafi/redux-saga)
