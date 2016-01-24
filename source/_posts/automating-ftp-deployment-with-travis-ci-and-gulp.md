@@ -63,7 +63,7 @@ after_success:
 
 This is all fine, but _curl_ is a bit limited in options. You have to add a command for each file, or combine them with the tedious _find_ command. No, as we allready use Gulp in this example project, why not add a gulp task for uploading the files an folders to FTP?
 
-We need three components for this: _minimist_ for passing command line arguments and vinyl_-ftp_ for the ftp uploading functionality and _gulp-util _for logging, _npm install vinyl-ftp gulp-util minimist --save-dev_.
+We need three components for this: _minimist_ for passing command line arguments and vinyl_-ftp_ for the ftp uploading functionality and _gulp-util_ for logging, `npm install vinyl-ftp gulp-util minimist --save-dev`.
 
 First we initialize minimist to get the user name and password from the command line arguments. This way we can later on pass the encrypted username and password defined in the .travis.yml to the gulp task.
 
@@ -95,9 +95,9 @@ gulp.task('deploy', function() {
 });
 ```
 
-It's that simple :). First we create new ftp connection with _vinyl-ftp_. Because we use gulp, we can now use glob patterns to gather the files to upload with gulp.src. Then, by piping the globs to the ftp connection, _vinyl-ftp_ will automatically uploads all those files and creates missing folders on the server if needed. This task can now be run from the command line like: *gulp deploy --user 'coolUser' --password 'mySecretPassword'*.
+It's that simple :). First we create new ftp connection with _vinyl-ftp_. Because we use gulp, we can now use glob patterns to gather the files to upload with gulp.src. Then, by piping the globs to the ftp connection, _vinyl-ftp_ will automatically uploads all those files and creates missing folders on the server if needed. This task can now be run from the command line like: `gulp deploy --user 'coolUser' --password 'mySecretPassword'`.
 
-> The _conn.newer(destination)_ method searches the destination for newer files, if there are newer files on the server then those files will not be uploaded with _conn.dest(destination)_.
+> The `conn.newer(destination)` method searches the destination for newer files, if there are newer files on the server then those files will not be uploaded with `conn.dest(destination)`.
 
 ## Integrating with Travis
 

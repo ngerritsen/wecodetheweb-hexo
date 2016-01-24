@@ -50,7 +50,7 @@ const prettyStyle = {
 }
 ```
 
-Because this is all just Javascript, we have endless possibilities! We could also compose styles from a base style with _Object.assign()_.
+Because this is all just Javascript, we have endless possibilities! We could also compose styles from a base style with `Object.assign()`.
 
 ```javascript
 const BLACK = '#000'
@@ -104,7 +104,7 @@ function createButton(color) {
 
 It creates a button style based on the color you give it. That color will be the background color. If it's a _light_ color the text will be _black_, otherwise the text will be _white_. It's a bit like a SASS mixin, except for that you have even more possibilities.
 
-Now we want to use _:hover_ styles on our button. This is a tough one, because we use inline styles instead of CSS, we can't use _:hover_. This is where [Radium](http://projects.formidablelabs.com/radium/) comes in. It's a decorator for React classes, which allows you to use a '_:hover_' property in your style objects. It uses Javascript to detect if the user is hovering over an element or not and switches the styles accordingly. Let's do the button example with a hover style:
+Now we want to use _hover_ styles on our button. This is a tough one, because we use inline styles instead of CSS, we can't use `:hover`. This is where [Radium](http://projects.formidablelabs.com/radium/) comes in. It's a decorator for React classes, which allows you to use a `:hover` property in your style objects. It uses Javascript to detect if the user is hovering over an element or not and switches the styles accordingly. Let's do the button example with a hover style:
 
 ```javascript
 import React, { Component } from 'react'
@@ -139,7 +139,7 @@ function createButtonStyle(color) {
 }
 ```
 
-We can now just use _:hover_ styles in our style object and Radium handles the rest.
+We can now just use _hover_ styles in our style object and Radium handles the rest.
 
 As you can see, lot's of possibilities. I'm eager to hear about anyone that applied this in their projects and what their experiences are. Happy styling!
 

@@ -41,7 +41,7 @@ export function addMessage(message) {
 }
 ```
 
-First we import a reference to the Dispatcher and the constants that contain our action types. When a user calls the _'addMessage()'_ Action builder function it will send a new Action object to the Dispatcher with its _'handleAction()'_ method. From that moment the job of the Action builder is done, fire and forget.
+First we import a reference to the Dispatcher and the constants that contain our action types. When a user calls the `addMessage()` Action builder function it will send a new Action object to the Dispatcher with its `handleAction()` method. From that moment the job of the Action builder is done, fire and forget.
 
 ## Dispatcher
 
@@ -123,7 +123,7 @@ export new MessageStore();
 
 Firstly, the state is declared in a variable outside of the Store to hide it from outsiders. Then we register the Store at the Dispatcher with a callback. Everytime the Dispatcher receives an Action this callback is called. If it is called with an Action of type *'ADD_MESSAGE'* we add a message to the messages list and notify the Views.
 
-The only way for outsiders to read the messages list is by calling _getMessages()_ on the Store. They can get notified for changes by registering a callback with the _addChangeListener()_ method. This implementation uses the event-emitter library to add this event functionality.
+The only way for outsiders to read the messages list is by calling `getMessages()` on the Store. They can get notified for changes by registering a callback with the `addChangeListener()` method. This implementation uses the event-emitter library to add this event functionality.
 
 > In this example I use [ImmutableJS](https://facebook.github.io/immutable-js/docs/#/) to make the messages list Immutable. When I push a message to the list, it doesn't mutate the original list, rather it returns a new list with the new message added. You are not required to use ImmutableJS, but I recommend never mutating data in your application so your data flow is simple and predictable.
 
@@ -168,9 +168,9 @@ export class MessageView extends Component {
 }
 ```
 
-This is an example of how a View could look in React. I won't get into the React specific details. When the component mounts it registers itself at the Store with the *'_onMessagesUpdated()'* callback. When the Store changes, it will call this callback and the View will retrieve the latest messages. So far the receiving part.
+This is an example of how a View could look in React. I won't get into the React specific details. When the component mounts it registers itself at the Store with the `_onMessagesUpdated()` callback. When the Store changes, it will call this callback and the View will retrieve the latest messages. So far the receiving part.
 
-A View however can also put new data into the application. But it cannot go straight back to the Store, this would violate the unidirectional data flow. It can do so by triggering Actions. This View does this in the *'_handleAddMessage()'* method. When the user inputs a message and clicks the _'Add'_ button, this handler will be fired and trigger an *'ADD_MESSAGE'* action, then the cycle begins all over again!
+A View however can also put new data into the application. But it cannot go straight back to the Store, this would violate the unidirectional data flow. It can do so by triggering Actions. This View does this in the `_handleAddMessage()` method. When the user inputs a message and clicks the _'Add'_ button, this handler will be fired and trigger an *'ADD_MESSAGE'* action, then the cycle begins all over again!
 
 ## Conclusion
 

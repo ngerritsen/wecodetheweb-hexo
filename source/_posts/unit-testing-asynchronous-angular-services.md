@@ -61,7 +61,7 @@ function dataService($http) {
 
 ## Angular & Angular Mocks
 
-Let's step back for a moment. Angular has an extensive dependency injection system. In a nutshell it works as follows. There is a global _angular_ object that keeps track of all the modules and their components. If you make a module you can register it at Angular with _angular.module('module name', [/*deps*/])_. Then you can register components at that module with: _angular.module('module name').*componentType*.('component name', implementation)_.
+Let's step back for a moment. Angular has an extensive dependency injection system. In a nutshell it works as follows. There is a global _angular_ object that keeps track of all the modules and their components. If you make a module you can register it at Angular with `angular.module('module name', [/*deps*/])`. Then you can register components at that module with: `angular.module('module name').*componentType*.('component name', implementation)`.
 
 Angular Mocks (aka ngMock) is a library that provides you with all kinds of tools to extract stuff from this system inside your unit tests. The most valuable tools are:
 
@@ -133,7 +133,7 @@ Essentially, what the _$provider_ service does is register components at a Ang
 
 > You can read the word 'service' a lot in this article. The confusion can be that Angular's own framework contains services, but users can also create their own services. So for instance the_ $provider, $http_ and _$controller_ service are services made by Angular, the _iceCreamService_ and _dataService_ are services made by us (the users). Most of the time Angular's own services are prefixed with '_$_'.
 
-Pretty cool huh? So now, let's zoom in a bit on the _mockedDataService. _The _dataService_ has one method: _getAllIceCream_. The _iceCreamService_ we are testing needs that method so we need to implement it.
+Pretty cool huh? So now, let's zoom in a bit on the _mockedDataService_. The _dataService_ has one method: _getAllIceCream_. The _iceCreamService_ we are testing needs that method so we need to implement it.
 
 ```javascript
 var mockedDataService = function() {
@@ -143,7 +143,7 @@ var mockedDataService = function() {
 }
 ```
 
-Hey that's something new. _jasmine.createSpy()_ creates a 'fake' method that can collect data about if, how and how many times it is called. Now we can verify that the method is actually called:
+Hey that's something new. `jasmine.createSpy()` creates a 'fake' method that can collect data about if, how and how many times it is called. Now we can verify that the method is actually called:
 
 ```javascript
 //All test setup gibberish
@@ -227,7 +227,7 @@ In the test we first expect the promise, this sets up the _getAllIceCream_ metho
 
 > Promises are actually just objects that manage callbacks. Instead of directly passing a callback to a function you let the function return an object that you can register the callback at. This makes for more manageable as well as flexible code and prevents you from getting into [callback hell](http://callbackhell.com/)...
 
-Then we resolve the promise with _flushGetAllIceCream(dummyData)_, now the callback that was registered is executed with the data we passed _flushGetAllIceCream_. Finally we verify if _getAllIceCream_ is called and that _retrieveIceCream_ added the new data to the _iceCreamService _with two _expect_ calls.
+Then we resolve the promise with `flushGetAllIceCream(dummyData)`, now the callback that was registered is executed with the data we passed _flushGetAllIceCream_. Finally we verify if _getAllIceCream_ is called and that _retrieveIceCream_ added the new data to the _iceCreamService_ with two _expect_ calls.
 
 As you can see you need quite some setup to test Angular services that asynchronously communicate with each other. But once you have it set up it's actually quite simple! Happy testing!
 

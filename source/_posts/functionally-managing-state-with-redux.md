@@ -74,7 +74,7 @@ So, how do we fire off this action? I mean, we need some money right?
 store.dispatch(addMoney(1000000)) //1 million!
 ```
 
-One line, that's it! _addMoney_ will return an action object of type _ADD_MONEY_ with an amount value of 1000000\. The store will pass that action to the reducer, which will determine the new state. This new state is then stored in the store and can be accessed like this:
+One line, that's it! _addMoney_ will return an action object of type *ADD_MONEY* with an amount value of 1000000\. The store will pass that action to the reducer, which will determine the new state. This new state is then stored in the store and can be accessed like this:
 
 ```javascript
 store.getState() // => 1000000
