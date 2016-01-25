@@ -1,6 +1,6 @@
 title: 'Hooking up React with redux using custom connectors'
 tags:
-  - ES2015
+  - ES6
   - Javascript
   - React
   - Redux

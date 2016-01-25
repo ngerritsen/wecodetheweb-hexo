@@ -1,6 +1,6 @@
 title: 'Var, let or const, what to use?'
 tags:
-  - ECMAScript 6
+  - ES6
   - Javascript
 id: 69
 categories:

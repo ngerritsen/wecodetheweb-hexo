@@ -1,7 +1,7 @@
 title: Using React with ES6 and Browserify
 tags:
   - Browserify
-  - ECMAScript 6
+  - ES6
   - Gulp
   - React
 id: 22

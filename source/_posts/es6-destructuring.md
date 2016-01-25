@@ -1,6 +1,6 @@
 title: ES6 Destructuring
 tags:
-  - ECMAScript 6
+  - ES6
   - Javascript
 id: 52
 categories:

@@ -1,6 +1,6 @@
 title: "React 0.14's coolest feature: function components"
 tags:
-  - ECMAScript 6
+  - ES6
   - React
 id: 283
 categories:

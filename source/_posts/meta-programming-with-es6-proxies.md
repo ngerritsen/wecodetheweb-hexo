@@ -1,6 +1,6 @@
 title: Meta programming with ES6 Proxies
 tags:
-  - ECMAScript 6
+  - ES6
   - Javascript
 id: 173
 categories:
