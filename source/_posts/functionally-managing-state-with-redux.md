@@ -4,6 +4,7 @@ tags:
   - Javascript
   - React
   - Redux
+  - Design patterns
 id: 263
 categories:
   - Uncategorized

@@ -1,8 +1,9 @@
 title: 'Handling async in Redux with Sagas'
 tags:
-  - ES2015
+  - ES6
   - Javascript
   - Redux
+  - Flux
   - Design patterns
 id: 300
 categories:

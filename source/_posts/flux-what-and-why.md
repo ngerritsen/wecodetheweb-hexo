@@ -1,9 +1,10 @@
 title: 'Flux, what and why?'
 tags:
-  - ECMAScript 6
+  - ES6
   - Flux
   - Javascript
   - React
+  - Design patterns
 id: 180
 categories:
   - Uncategorized
