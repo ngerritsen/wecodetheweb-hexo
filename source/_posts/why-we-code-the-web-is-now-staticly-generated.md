@@ -14,11 +14,11 @@ __In case you haven't noticed. We code the web had a big makeover. It's not just
 
 ## What's up?
 
-We code the web used to run on [Wordpress](https://wordpress.com/). And don't get my wrong, Wordpress is fine. A blog like this is the perfect case for Wordpress, it's not too complicated and content focussed. Wordpress has a really nice, user friendly admin panel, everyone can use it.
+We code the web used to run on [Wordpress](https://wordpress.com/). And don't get me wrong, Wordpress is fine. A blog like this is the perfect case for Wordpress, it's not too complicated and content focused. Wordpress has a really nice, user friendly admin panel, everyone can use it.
 
-But there are a few problems. One is that Wordpress can be unpredictable, after an update a bug can appear and you would have no idea where it is coming from. A blog like this is too small to have staging environments or whatsoever, you just want it to work right away. Also it is a little clunky to setup. You need a server running PHP and MySQL. Then you need to make database for your blog to store it's data on, so it's pretty much tied to the server now. Not very flexible.
+But there are a few problems. One is that Wordpress can be unpredictable; after updating a bug can appear and you would have no idea where it is coming from. A blog like this is too small to have staging environments or whatsoever, you just want it to work right away. Also it is a little clunky to setup. You'll need a server that's running PHP and MySQL. Then you need to make database for your blog to store it's data on, so it's pretty much tied to the server now. Not very flexible.
 
-And last but not least Wordpress can be quite slow. Consumer grade web hosting servers (like the one I use), are often not very fast. Remember that every time a user requests a page, the server has to generate that page with PHP and then send it back. There are plugins like [WP Supercache](https://nl.wordpress.org/plugins/wp-super-cache/) that partially solve this by caching that page, but still, the PHP code has to run and that gives extra delay.
+Last but not least, Wordpress can be quite slow. Consumer grade web hosting servers (like the one I use), are often not very fast. Remember that every time a user requests a page, the server has to generate that page with PHP and then send it back. There are plugins like [WP Supercache](https://nl.wordpress.org/plugins/wp-super-cache/) that partially solve this by caching that page, but still, the PHP code has to run and that gives extra delay.
 
 Here's a performance measurement I did with [Securi](https://performance.sucuri.net) that Smashing Magazine also did for an [article](http://www.smashingmagazine.com/2015/11/modern-static-website-generators-next-big-thing/) about static website generation with their website.
 
