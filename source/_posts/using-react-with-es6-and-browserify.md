@@ -56,7 +56,7 @@ Then we apply the transpilation from JSX + ES6 to plain ES5 Javascript. If we i
 var gulp = require('gulp');
 var browserify = require('browserify');
 var babelify = require('babelify');
-var source = require('vinly-source-stream');
+var source = require('vinyl-source-stream');
 
 gulp.task('bundle', function() {
     return browserify({
