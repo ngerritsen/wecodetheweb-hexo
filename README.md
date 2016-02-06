@@ -1,1 +1,1 @@
-![build](https://travis-ci.org/ngerritsen/wecodetheweb.svg)
+![build](https://travis-ci.org/ngerritsen/wecodetheweb-hexo.svg)
