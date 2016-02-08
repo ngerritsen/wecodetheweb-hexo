@@ -72,11 +72,11 @@ Angular Mocks (aka ngMock) is a library that provides you with all kinds of tool
 
 ## Building the tests
 
-So how do we go about testing our _iceCreamApp_? We could use the _$httpBackend_ service provided by Angular Mocks simulate the _dataService's_ HTTP calls. But for now we <span style="text-decoration: underline;">only</span> want to test the _iceCreamService_, not _dataService._ Using _$httpBackend_ would mean that we also depend on _dataService_ working properly, we don't want that in a unit test.
+So how do we go about testing our _iceCreamApp_? We could use the _$httpBackend_ service provided by Angular Mocks to simulate the _dataService's_ HTTP calls. But for now we <span style="text-decoration: underline;">only</span> want to test the _iceCreamService_, not _dataService._ Using _$httpBackend_ would mean that we also depend on _dataService_ working properly, we don't want that in a unit test.
 
 > For this article I used Jasmine as a test framework. But you can use the same solution in any javascript test framework like Mocha or QUnit.
 
-No, we have to make a 'mocked' _dataService._ But how do we let our test use the fake _dataService_ instead of the 'real' one? If you are testing an Angular controller that depends on a service this is quite obvious, you can use the _$controller_ service of Angular Mocks to inject a fake _dataService_ into the controller like this:
+Now, we have to make a 'mocked' _dataService._ But how do we let our test use the fake _dataService_ instead of the 'real' one? If you are testing an Angular controller that depends on a service this is quite obvious, you can use the _$controller_ service of Angular Mocks to inject a fake _dataService_ into the controller like this:
 
 ```javascript
 describe('ice cream controller', function() {
@@ -131,7 +131,7 @@ It's kind of nasty in my opinion, but here is what happens. First we just load o
 
 Essentially, what the _$provider_ service does is register components at a Angular module. What we do is register the _mockedDataService_ with '_dataService_' as the component name, basically overriding the original one. When the _iceCreamService_ is then injected and it tries to get the _dataService_, it gets the mocked version.
 
-> You can read the word 'service' a lot in this article. The confusion can be that Angular's own framework contains services, but users can also create their own services. So for instance the_ $provider, $http_ and _$controller_ service are services made by Angular, the _iceCreamService_ and _dataService_ are services made by us (the users). Most of the time Angular's own services are prefixed with '_$_'.
+> You can read the word 'service' a lot in this article. The confusion can be that Angular's own framework contains services, but users can also create their own services. So for instance the_ $provider, $http_ and _$controller_ service are services made by Angular, the _iceCreamService_ and _dataService_ are services made by us (the developers). Most of the time Angular's own services are prefixed with '_$_'.
 
 Pretty cool huh? So now, let's zoom in a bit on the _mockedDataService_. The _dataService_ has one method: _getAllIceCream_. The _iceCreamService_ we are testing needs that method so we need to implement it.
 
@@ -158,7 +158,7 @@ describe('when retrieving ice cream', function() {
 
 ## Getting async
 
-What happens in this test, is call the _iceCreamService_ with the _retrieveIceCream_ method and expect the _getAllIceCream_ method to have been called. But actually, when running this test, javascript will throw an error. Because if you look closely at the _iceCreamService_ it expects the _getAllIceCream_ method to return a promise:
+What happens in this test, is it calls the _iceCreamService_ with the _retrieveIceCream_ method and expect the _getAllIceCream_ method to have been called. But actually, when running this test, javascript will throw an error. Because if you look closely at the _iceCreamService_ it expects the _getAllIceCream_ method to return a promise:
 
 ```javascript
 function retrieveIceCream() {
@@ -206,7 +206,6 @@ describe('ice cream controller', function() {
       flushGetAllIceCream(dummyData);
 
       expect(mockedDataService.getAllIceCream).toHaveBeenCalled();
-      expect(iceCreamService.
     });
   });
 
