@@ -10,7 +10,7 @@ categories:
   - Uncategorized
 date: 2016-01-23 18:57:00
 ---
-__Using Redux is a nice way code structured, testable Javascript applications. But there's still one thing that can prove to be a challenge, asynchronous operations.__
+__Using Redux is a nice way to code structured, testable Javascript applications. But there's still one thing that can prove to be a challenge, asynchronous operations.__
 
 <!--more-->
 
