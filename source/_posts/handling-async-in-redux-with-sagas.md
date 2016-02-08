@@ -25,8 +25,10 @@ In [redux](http://rackt.org/redux/index.html), the events happening in the appli
 
 ```javascript
 function saveScore (score) {
-  type: SAVE_SCORE,
-  score
+  return {
+    type: SAVE_SCORE,
+    score
+  }
 }
 
 // usage
@@ -102,15 +104,17 @@ Why not use middleware, we could write generic middleware that does requests, an
 
 ```javascript
 function saveScore (score) {
-  type: SAVE_SCORE,
-  score,
-  request: {
-    method: 'GET',
-    url: '/test',
-    success (dispatch) {
-      dispatch({
-        type: SAVE_SCORE_SUCCEEDED
-      })
+  return {
+    type: SAVE_SCORE,
+    score,
+    request: {
+      method: 'GET',
+      url: '/test',
+      success (dispatch) {
+        dispatch({
+          type: SAVE_SCORE_SUCCEEDED
+        })
+      }
     }
   }
 }
@@ -172,17 +176,23 @@ Our action creators can now just return plain and simple objects:
 
 ```javascript
 function saveScore (score) {
-  type: SAVE_SCORE,
-  score
+  return {
+    type: SAVE_SCORE,
+    score
+  }
 }
 
 function saveScoreSucceeded () {
-  type: SAVE_SCORE_SUCCEEDED
+  return {
+    type: SAVE_SCORE_SUCCEEDED
+  }
 }
 
 function saveScoreFailed (err) {
-  type: SAVE_SCORE_FAILED,
-  err
+  return {
+    type: SAVE_SCORE_FAILED,
+    err
+  }
 }
 ```
 
@@ -196,8 +206,8 @@ it('works when the request succeeds', () => {
 
   expect(it.next().value).to.deep.equal(take(SAVE_SCORE))
 
-  expect(it.next(true).value)
-    .to.deep.equal(call(fetch, '/scores', { method: 'GET', body: { score } }))
+  expect(it.next({ score: 7 }).value)
+    .to.deep.equal(call(fetch, '/scores', { method: 'GET', body: { score: 7 } }))
 
   expect(it.next().value).to.deep.equal(put(saveScoreSucceeded()))
 })
@@ -218,7 +228,7 @@ function* requestSaga (method, url, body) {
 function* saveScoreSaga () {
   while(true) {
     const { score } = yield take(SAVE_SCORE)
-    const { err, res } = yield call(request, 'POST', '/scores', { score })
+    const { err, res } = yield call(requestSaga, 'POST', '/scores', { score })
 
     if (err) {
       yield put (saveScoreFailed(err))
@@ -237,7 +247,7 @@ Yielding _call_ actually blocks the Saga. No other *SAVE_SCORE* action will be h
 
 ```javascript
 function* saveScoreSaga (score) {
-  const { err, res } = yield call(request, 'POST', '/scores', { score })
+  const { err, res } = yield call(requestSaga, 'POST', '/scores', { score })
 
   if (err) {
     yield put(saveScoreFailed(err))
@@ -266,7 +276,7 @@ Now, when the *SAVE_SCORE* action is retrieved, the _watchSaveScoreSaga_ will ca
 _Async functions_ are a new feature coming to the next version of EcmaScript. They are currently in _stage-3_, meaning they are a candidate for the next version. They work as follows:
 
 ```javascript
-async function saveScore () {
+async function saveScore (score) {
   try {
     const res = await fetch('/scores', { method: 'POST', { score } })
     // Do something
