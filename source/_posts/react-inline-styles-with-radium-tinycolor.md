@@ -41,7 +41,7 @@ This allows you to make really independent React components! You have your Javas
 ```javascript
 import tinycolor from 'tinycolor2'
 
-const BLACK = #000
+const BLACK = '#000'
 
 const prettyStyle = {
   color: tinycolor('#ff0000').setAlpha(.5).toString(),
