@@ -129,7 +129,7 @@ But then your Action creators still need to pass a callback along with the Actio
 
 ## A Saga
 
-[Redux-saga](https://github.com/yelouafi/redux-saga) has a real nice solution for this issue. It separates the async logic from the action by putting it into '_Sagas_'. Sagas can be seen as little stories that _describe_ the _behaviour_ of one or more Actions.
+[Redux-saga](https://github.com/yelouafi/redux-saga) has a really nice solution for this issue. It separates the async logic from the action by putting it into '_Sagas_'. Sagas can be seen as little stories that _describe_ the _behaviour_ of one or more Actions.
 
 Sagas work like daemons that run in the background. Redux-saga's '_sagaMiddleware_' runs and controls these Sagas. The Sagas themselves are ES6 _generator functions_, this allows redux-saga to have control over every single step the Saga does.
 
