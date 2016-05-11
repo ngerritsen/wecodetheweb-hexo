@@ -259,7 +259,7 @@ function* saveScoreSaga (score) {
 function* watchSaveScoreSaga () {
   while(true) {
     const { score } = yield take(SAVE_SCORE)
-    yield fork(saveScoreSaga(score))
+    yield fork(saveScoreSaga, score)
   }
 }
 
