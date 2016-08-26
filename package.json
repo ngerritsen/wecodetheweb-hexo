@@ -3,11 +3,12 @@
   "version": "0.0.0",
   "private": true,
   "hexo": {
-    "version": "3.1.1"
+    "version": "3.2.2"
   },
   "scripts": {
     "build": "npm run build:assets; hexo clean; hexo generate;",
-    "build:assets": "cd themes/wecodetheweb; npm run build; cd ../.."
+    "build:assets": "cd themes/wecodetheweb; npm run build; cd ../..",
+    "watch": "hexo serve --draft"
   },
   "dependencies": {
     "hexo": "^3.1.1",
