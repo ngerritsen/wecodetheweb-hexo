@@ -8,11 +8,13 @@ tags:
 id: 300
 categories:
   - Uncategorized
-date: 2016-01-23 18:57:00
+date: 2016-10-01 18:57:00
 ---
 __Using Redux is a nice way to code structured, testable Javascript applications. But there's still one thing that can prove to be a challenge, asynchronous operations.__
 
 <!--more-->
+
+__Note:__ This article was originally written _January 23, 2016_, because redux-saga changed a lot since, it is updated for the latest version as of _October 1, 2016_. Most notably `while (true) { take(ACTION) }` is replaced with `takeEvery` (old version still works though) and you now need to have one _'root saga'_.
 
 > If you don't know about redux, you can check out my article about it: [
 "Functionally managing state with Redux"](2015/09/29/functionally-managing-state-with-redux/)
@@ -75,9 +77,9 @@ This looks pretty good, there's a nice overview of what happens. The downside is
 A test would look something like this:
 
 ```javascript
-it('works', done => {
+it('Save score posts the score to the server and dispatches a success action.', done => {
   const server = sinon.fakeServer.create()
-  server.respondWith('GET', '/scores', [
+  server.respondWith('POST', '/scores', [
     200,
     { Content-Type: 'application/json' },
     '{ "success": true }'
@@ -136,33 +138,33 @@ Sagas work like daemons that run in the background. Redux-saga's '_sagaMiddlewar
 This is how the Saga for our action would look:
 
 ```javascript
-function* saveScoreSaga () {
-  while(true) {
-    // Wait for the SAVE_SCORE action
-    const { score } = yield take(SAVE_SCORE)
+function *saveScoreSaga() {
+  // Wait for (every) SAVE_SCORE action
+  takeEvery(SAVE_SCORE, saveScore);
+}
 
-    try {
-      // Tell redux-saga to call fetch with the specified options
-      yield call(fetch, '/scores', { method: 'GET', body: { score } })
-      // Tell redux-saga to dispatch the saveScoreSucceeded action
-      yield put(saveScoreSucceeded())
-    catch (err) {
-      // You get it
-      yield put (saveScoreFailed(err))
-    }
+function *saveScore({ score }) {
+  try {
+    // Tell redux-saga to call fetch with the specified options
+    yield call(fetch, '/scores', { method: 'GET', body: { score } })
+    // Tell redux-saga to dispatch the saveScoreSucceeded action
+    yield put(saveScoreSucceeded())
+  }
+  catch (err) {
+    // You get it
+    yield put (saveScoreFailed(err))
   }
 }
 
-const middlewares = [ sagaMiddleware(saveScoreSaga) ]
-const createStoreWithSagas = applyMiddleware(middlewares)(createStore)
-const store = createStoreWithSagas(mainReducer)
+const sagaMiddleware = createSagaMiddleware()
+const createStoreWithSagas = createStore(reducer, applyMiddleware(sagaMiddleware))
+
+sagaMiddleware.run(saveScore)
 ```
 
-Let's break this down, first of all `function*` means that this is a _'generator function'_. As you notice, this is an infinite while loop, don't panic! Generators don't run by themselves. The `while(true)` will just make sure the Saga will keep running throughout the application lifetime. We create the middleware by calling `sagaMiddleware(...sagas)` passing it the Sagas it needs to run. We use `applyMiddleware(...mw)` to apply the _sagaMiddlware_ to the store.
+Let's break this down, first of all `function *` means that this is a _'generator function'_. By yielding `takeEvery` we tell redux-saga to call the _saveScore_ generator function.
 
 > Generator functions are an ES6 feature. For more information on generators, David Walsch has an [awesome article](https://davidwalsh.name/es6-generators) on this subject.
-
-We start with calling redux-sagas _take_ function. This function returns a take object. We _yield_ this object by using the special keyword `yield`. This take object let's the sagaMiddleware know that we want to wait for a specific action. The generator function will now pause until the caller (the sagaMiddleware), resumes it. When the sagaMiddleware received the 'SAVE_SCORE' action, we continue to the next yield..
 
 > Right of the yield keyword, you can place a value you want to _return_ to the caller. On the left, you can _retrieve_ a value back from the caller. Both are optional.
 
@@ -175,78 +177,76 @@ If the call succeeds, we yield a _put_ object with an action of type *SAVE_SCORE
 Our action creators can now just return plain and simple objects:
 
 ```javascript
-function saveScore (score) {
-  return {
-    type: SAVE_SCORE,
-    score
-  }
-}
+const saveScore = score => ({
+  type: SAVE_SCORE,
+  score
+})
 
-function saveScoreSucceeded () {
-  return {
-    type: SAVE_SCORE_SUCCEEDED
-  }
-}
+const saveScoreSucceeded = () => ({
+  type: SAVE_SCORE_SUCCEEDED
+})
 
-function saveScoreFailed (err) {
-  return {
-    type: SAVE_SCORE_FAILED,
-    err
-  }
-}
+const saveScoreFailed = err => ({
+  type: SAVE_SCORE_FAILED,
+  err
+})
 ```
 
 These action creators will be a breeze to test! This makes you wonder if we even need them anymore. I think there still are some use case where you  want to do some simple, synchronous operations in an action creator.
 
-Now how do we test the Saga?
+To test the _saveScore_ function you would need to export it. We can test it like this:
 
 ```javascript
-it('works when the request succeeds', () => {
-  const it = saveScoreSaga()
+test('Puts a success action when the request succeeds.', t => {
+  const it = saveScore({ score: 7 })
 
-  expect(it.next().value).to.deep.equal(take(SAVE_SCORE))
+  t.deepEqual(
+    it.next().value,
+    call(fetch, '/scores', { method: 'GET', body: { score: 7 } })
+  )
 
-  expect(it.next({ score: 7 }).value)
-    .to.deep.equal(call(fetch, '/scores', { method: 'GET', body: { score: 7 } }))
-
-  expect(it.next().value).to.deep.equal(put(saveScoreSucceeded()))
+  t.deepEqual(
+    it.next().value,
+    put(saveScoreSucceeded())
+  )
 })
 ```
 
-Look at how simple that test is! By calling `it.next(value)` we can continue to the next step, optionally passing a value. This is _exactly_ what the sagaMiddleware also does when running the Saga. The result of each `it.next()` has a _value_ property, containing the value the generator _yields_ at that point. Because we yield plain objects, we can just use a deep equal to check if they are correct.
+Look at how simple that test is! By calling `it.next(value)` we can continue to the next step, optionally passing a value. This is _exactly_ what the sagaMiddleware also does when running the Saga. The result of each `it.next()` has a _value_ property, containing the value the generator _yields_ at that point. Because we yield plain objects, we can just use a deep equal to check if they are correct. To test the saga that calls _takeEvery_ we need to use _call_ to call takeEvery:
+
+```javascript
+function *saveScoreSaga() {
+  call(takeEvery, SAVE_SCORE, saveScore);
+}
+```
+
+```javascript
+test('Takes every save score action.', t => {
+  const it = saveScoreSaga()
+
+  t.deepEqual(
+    it.next().value,
+    call(takeEvery, SAVE_SCORE, saveScore)
+  )
+})
+```
+
+You can argue that the last test is not that useful, but at least now you know what to do if code coverage is important to you or your team.
 
 ## Nesting Sagas
 
 It is also possible to nest Sagas. Let's say we have a generic _requestSaga_ for doing requests, maybe because we want to do some default error handling in there:
 
 ```javascript
-function* requestSaga (method, url, body) {
-  // Do request
+function *requestSaga (method, url, body) {
   return { err: error, res: result }
 }
 
-function* saveScoreSaga () {
-  while(true) {
-    const { score } = yield take(SAVE_SCORE)
-    const { err, res } = yield call(requestSaga, 'POST', '/scores', { score })
-
-    if (err) {
-      yield put (saveScoreFailed(err))
-    } else {
-      yield put(saveScoreSucceeded())
-    }
-  }
+function *saveScoreSaga() {
+  takeEvery(SAVE_SCORE, saveScore);
 }
-```
 
-Instead of calling an asynchronous function, we can call another Saga. This will wait for the other Saga to finish and then continue.
-
-## Non blocking Sagas
-
-Yielding _call_ actually blocks the Saga. No other *SAVE_SCORE* action will be handled until this one has finished. In most cases that is desired behaviour, but sometimes you might want it to be able to handle tasks in parallel. Redux-saga has the _fork_ function for that. We could use that as follows:
-
-```javascript
-function* saveScoreSaga (score) {
+function* saveScore({ score }) {
   const { err, res } = yield call(requestSaga, 'POST', '/scores', { score })
 
   if (err) {
@@ -255,21 +255,41 @@ function* saveScoreSaga (score) {
     yield put(saveScoreSucceeded())
   }
 }
-
-function* watchSaveScoreSaga () {
-  while(true) {
-    const { score } = yield take(SAVE_SCORE)
-    yield fork(saveScoreSaga, score)
-  }
-}
-
-const middlewares = [ sagaMiddleware(watchSaveScoreSaga) ]
-// Etc..
 ```
 
-Now, when the *SAVE_SCORE* action is retrieved, the _watchSaveScoreSaga_ will call the _saveScoreSaga_ and then __immediately__ continue, going back to `yield take(SAVE_SCORE)` again. This way multiple scores can be saved in parallel. Note that we now need to register the _watchSaveScoreSaga_ instead of the _saveScoreSaga_ at the _sagaMiddleware_.
+Instead of calling an asynchronous function, we can call another Saga. This will wait for the other Saga to finish and then continue.
 
-> You only need to register the Sagas that actually _take_ actions. The others can be considered 'sub' Sagas, only called by others.
+## Sequential Sagas
+
+By using `takeLatest` we can make a saga only take the latest action, when a saga is already triggered and a new action comes along the old one is cancelled. In some cases this is desired behaviour:
+
+```javascript
+function *saveScoreSaga() {
+  takeEvery(SAVE_SCORE, saveScore);
+}
+```
+
+## Multiple Sagas
+
+It is not possible (anymore) to register multiple saga's at the saga middleware. Just like with reducers in redux, you need a root saga that calls to other saga's.
+
+```javascript
+function *rootSaga() {
+  yield [
+    saveScoreSaga(),
+    otherSaga()
+  ]
+}
+
+const sagaMiddleware = createSagaMiddleware()
+const createStoreWithSagas = createStore(reducer, applyMiddleware(sagaMiddleware))
+
+sagaMiddleware.run(rootSaga)
+```
+
+The _rootSaga_ yields an array of saga's. These saga's should already be called, so you actually yield an array of _iterator_ objects.
+
+> You only need to yield the Sagas that actually _take_ actions or that you want to execute immediately. The others can be considered 'sub' Sagas, only called by others.
 
 ## Why not use ES2016/Next async await?
 
@@ -290,9 +310,10 @@ This function is marked as asynchronous by the `async` keyword. As soon as the t
 
 ## Conclusion
 
-Sagas are _awesome_, they are a really nice way of doing async in redux. They succeed at seperating concerns and making testing really easy. It might be confusing at first, but once you start trying Sagas out it all starts to make sense. There are other implementations out there for handling side effects, like [redux-side-effect](https://github.com/gregwebs/redux-side-effect), [redux-effects](https://github.com/redux-effects/redux-effects) and [redux-loop](https://github.com/RaiseMarketplace/redux-loop). But, in my opinion, none of them solves it as elegantly as redux-saga. Happy coding!
+Sagas are _awesome_, they are a really nice way of doing async in redux. They succeed at separating concerns and making testing really easy. It might be confusing at first, but once you start trying Sagas out it all starts to make sense. There are other implementations out there for handling side effects, like [redux-side-effect](https://github.com/gregwebs/redux-side-effect), [redux-effects](https://github.com/redux-effects/redux-effects) and [redux-loop](https://github.com/RaiseMarketplace/redux-loop). But, in my opinion, none of them solves it as elegantly as redux-saga. Happy coding!
 
 ## Reference
 - Redux-saga: [github.com/yelouafi/redux-saga](https://github.com/yelouafi/redux-saga)
+- Redux-saga docs: [yelouafi.github.io/redux-saga](https://yelouafi.github.io/redux-saga/index.html)
 - Redux docs: [rackt.org/redux](http://rackt.org/redux/index.html)
 - Basics of ES6 generators: [davidwalsh.name/es6-generators](https://davidwalsh.name/es6-generators)
