@@ -15,7 +15,7 @@ date: 2016-11-05 18:28:00
 
 ## Getting started with ESLint
 
-Although this article is not about the basics of [ESLint](http://eslint.org/), I will take a moment to show you how to get started. First of all install ESLint globally to get started. Make sure you have [Node.js](https://nodejs.org/en/) on your machine and run the following command from the terminal:
+Although this article is not about the basics of [ESLint](http://eslint.org/), I will take a moment to show you how to get started. First of all install ESLint globally. Make sure you have [Node.js](https://nodejs.org/en/) on your machine and run the following command from the terminal:
 
 ```bash
 npm install eslint -g
@@ -52,7 +52,7 @@ You should see one error saying: _"'shout' is defined but never used"_. ESLint's
 
 ## Recommended rules
 
-When you are just starting out, start by extending the recommended rules like we just did. Why? Because you might not be able to select all the rules that you might need by yourself and you might not have developed a clear code style yet.
+When you are just starting out, start by extending the recommended rules like we just did. Why? Because you will get lost in all the possible rules if you try to select your own set.
 
 > If the config file is empty, no rules will be applied. Only syntax errors will make ESLint error. If you extend a set of rules, all rules you define yourself will override those from the set.
 
@@ -60,9 +60,9 @@ The recommended rules catch the most common errors and bad practices in your cod
 
 ## Reducing complexity
 
-Most people start using linters because they want all their team members to use the same conventions, like _single quotes_ or _two spaces of indentation_. Although that is certainly useful and you should probably do that, we'll focus on improving actual code quality. Let's start by reducing **'cyclomatic complexity'**.
+Most people start using linters because they want all their team members to use the same style, like _single quotes_ or _two spaces of indentation_. Although that is certainly useful and you should probably do that, in this article we'll focus on improving actual code quality. Let's start by reducing **'cyclomatic complexity'**.
 
-Cyclomatic complexity is measured by the amount of _branches_ a piece of code (in our case, a single function) has. Branches are the routes you can take trough the code. High complexity is bad because it makes code hard to understand and therefore it is easy for bugs slip though. Also it makes maintaining the code a pain.
+Cyclomatic complexity is measured by the amount of _branches_ a piece of code (in our case, a single function) has. A branch is a single and unique route you can take trough a piece code. High complexity is bad because it makes code hard to understand and maintain, as a result it is easy for bugs slip though.
 
 Consider the following example:
 
@@ -76,7 +76,7 @@ function isHappy(user) {
 }
 ```
 
-This function has a cyclomatic complexity of 2, because there are two routes. You can either exit via the if statement or via the end. 2 is a nice and low complexity level! Let's configure ESLint so that it will keep our complexity low:
+This function has a cyclomatic complexity of 2, because there are two possible routes the execution can take. Two is a nice and low complexity level. Let's configure ESLint to keep it that way. 👍
 
 ```json
 {
@@ -107,7 +107,7 @@ function isHealthy(player, config) {
 }
 ```
 
-The above function has 4 statements (which is fine 😇). More statements means more lines of code, make sure this is true by configuring the max statements per line rule. We want to keep our functions small like this. Let's configure ESLint to check this for us:
+The above function has **4** statements (which is fine 😇). More statements means more lines of code, make sure this is true by configuring the max statements per line rule. We want to keep our functions small like this. Let's configure ESLint to check this for us:
 
 ```json
 {
@@ -124,7 +124,7 @@ The above function has 4 statements (which is fine 😇). More statements means 
 }
 ```
 
-Somewhere around 7 is a nice value for max statements, you could go even lower. Max statements per line should be one, this makes statements easy to detect.
+Somewhere around **7** is a nice value for max statements, you could go even lower. Max statements per line should be one, this makes statements easy to detect.
 
 ## Reducing nesting
 
@@ -212,9 +212,9 @@ We came up with a pretty decent configuration already! Check it out:
 }
 ```
 
-## Of the shelf configurations
+## Off the shelf configurations
 
-I can imagine you don't want to check out _all_ the rules that ESLint has to offer, but just want a 'good' config. There are some pre-defined configs out there that you can use. I also created one called [eslint-config-ngerritsen](https://www.npmjs.com/package/eslint-config-ngerritsen). You can use it as follows:
+I can imagine you don't want to check out _all_ the rules that ESLint has to offer for yourself, but just want a 'good' config. There are some pre-defined configs out there that you can use. I also created one called [eslint-config-ngerritsen](https://www.npmjs.com/package/eslint-config-ngerritsen). You can use it as follows:
 
 ```bash
 npm install eslint-config-ngerritsen -g
