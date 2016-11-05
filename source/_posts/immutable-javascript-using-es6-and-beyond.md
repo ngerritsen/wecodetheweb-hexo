@@ -1,9 +1,9 @@
 title: 'Immutable Javascript using ES6 and beyond'
 tags:
   - ES6
-  - ES.Next
   - Javascript
   - Design patterns
+  - Code quality
 id: 301
 categories:
   - Uncategorized

@@ -1,6 +1,6 @@
 title: Effortless unit testing with AVA
 tags:
-  - Unit testing
+  - Testing
   - Ava
   - Javascript
 id: 302

@@ -1,6 +1,7 @@
 title: Software principles in Front-end development
 tags:
   - General
+  - Code quality
 id: 130
 categories:
   - Uncategorized

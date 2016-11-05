@@ -2,6 +2,7 @@ title: Better Javascript apps by optimizing state
 tags:
   - ESLint
   - Javascript
+  - Code quality
 id: 302
 categories:
   - Uncategorized

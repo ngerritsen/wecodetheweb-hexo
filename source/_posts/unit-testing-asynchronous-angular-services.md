@@ -4,6 +4,7 @@ tags:
   - Jasmine
   - Javascript
   - Promises
+  - Testing
 id: 171
 categories:
   - Uncategorized

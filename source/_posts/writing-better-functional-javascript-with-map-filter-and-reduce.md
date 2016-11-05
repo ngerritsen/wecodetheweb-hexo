@@ -2,6 +2,7 @@ title: Writing better, functional Javascript with map, filter and reduce
 tags:
   - General
   - Javascipt
+  - Code quality
 id: 1
 categories:
   - Uncategorized
