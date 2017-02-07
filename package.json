@@ -12,7 +12,7 @@
     "sass": "node-sass ./themes/wecodetheweb/source/_scss/ --output-style compressed -o ./themes/wecodetheweb/source/css/",
     "sass:dev": "node-sass ./themes/wecodetheweb/source/_scss/ -o ./themes/wecodetheweb/source/css/",
     "sass:watch": "npm run sass:dev; node-sass -w ./themes/wecodetheweb/source/_scss/ -o ./themes/wecodetheweb/source/css/",
-    "js": "browserify -t [ uglifyify -m -c ] ./themes/wecodetheweb/source/js/_src/main.js -o ./themes/wecodetheweb/source/js/bundle.js",
+    "js": "browserify -g uglifyify ./themes/wecodetheweb/source/js/_src/main.js -o ./themes/wecodetheweb/source/js/bundle.js",
     "js:watch": "npm run js; watchify ./themes/wecodetheweb/source/js/_src/main.js -o ./themes/wecodetheweb/source/js/bundle.js"
   },
   "dependencies": {
