@@ -6,11 +6,11 @@
     "version": "3.2.2"
   },
   "scripts": {
-    "build": "npm run build:assets; npm run optimize-images; npm run build:hexo",
+    "build": "npm run build:assets; npm run images; npm run build:hexo",
     "build:hexo": "hexo clean; hexo generate",
     "build:assets": "npm run sass; npm run js",
     "serve": "hexo clean; hexo server -p 4040",
-    "images": "node ./optimize-images",
+    "images": "node ./optimize-images.js",
     "sass": "node-sass ./themes/wecodetheweb/source/_scss/ --output-style compressed -o ./themes/wecodetheweb/source/css/",
     "sass:dev": "node-sass ./themes/wecodetheweb/source/_scss/ -o ./themes/wecodetheweb/source/css/",
     "sass:watch": "npm run sass:dev; node-sass -w ./themes/wecodetheweb/source/_scss/ -o ./themes/wecodetheweb/source/css/",
