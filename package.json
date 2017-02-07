@@ -1,14 +1,19 @@
 {
-  "name": "hexo-site",
-  "version": "0.0.0",
+  "name": "wecodetheweb",
+  "version": "1.0.0",
   "private": true,
   "hexo": {
     "version": "3.2.2"
   },
   "scripts": {
     "build": "npm run build:assets; hexo clean; hexo generate;",
-    "build:assets": "cd themes/wecodetheweb; npm run build; cd ../..",
-    "watch": "hexo serve --draft"
+    "serve": "hexo clean; hexo serve --draft",
+    "build:assets": "npm run sass; npm run js",
+    "sass": "node-sass ./themes/wecodetheweb/source/_scss/ --output-style compressed -o ./themes/wecodetheweb/source/css/",
+    "sass:dev": "node-sass ./themes/wecodetheweb/source/_scss/ -o ./themes/wecodetheweb/source/css/",
+    "sass:watch": "npm run sass:dev; node-sass -w ./themes/wecodetheweb/source/_scss/ -o ./themes/wecodetheweb/source/css/",
+    "js": "browserify -t [ uglifyify -m -c ] ./themes/wecodetheweb/source/js/_src/main.js -o ./themes/wecodetheweb/source/js/bundle.js",
+    "js:watch": "npm run js; watchify ./themes/wecodetheweb/source/js/_src/main.js -o ./themes/wecodetheweb/source/js/bundle.js"
   },
   "dependencies": {
     "hexo": "^3.1.1",
@@ -20,12 +25,17 @@
     "hexo-renderer-ejs": "^0.1.0",
     "hexo-renderer-marked": "^0.2.4",
     "hexo-renderer-stylus": "^0.3.0",
-    "hexo-server": "^0.1.2"
+    "hexo-server": "^0.1.2",
+    "jquery": "^3.1.1"
   },
   "devDependencies": {
+    "browserify": "^12.0.1",
     "gulp": "^3.9.0",
     "gulp-util": "^3.0.7",
     "minimist": "^1.2.0",
-    "vinyl-ftp": "^0.4.5"
+    "node-sass": "^3.4.1",
+    "uglifyify": "^3.0.1",
+    "vinyl-ftp": "^0.4.5",
+    "watchify": "^3.6.0"
   }
 }

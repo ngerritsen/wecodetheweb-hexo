@@ -5,4 +5,7 @@ db.json
 node_modules/
 public/
 .deploy*/
-themes
+themes/wecodetheweb/node_modules/
+themes/wecodetheweb/source/css
+themes/wecodetheweb/source/js/bundle.js
+.vscode

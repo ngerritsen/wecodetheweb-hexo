@@ -1,12 +1,8 @@
 language: node_js
 node_js:
-  - "4.1"
-install:
-- npm install
-- npm install -g hexo gulp
-- git clone https://github.com/ngerritsen/wecodetheweb-hexo-theme themes/wecodetheweb
-- cd themes/wecodetheweb && npm install && cd ../..
+  - "7"
+cache: yarn
 script:
-- cd themes/wecodetheweb && npm run build && cd ../..
-- hexo generate
-after_success: ./node_modules/gulp/bin/gulp.js deploy --user $FTP_USER --password $FTP_PASSWORD
+- yarn run build
+- ./node_modules/.bin/hexo generate
+after_success: ./node_modules/.bin/gulp deploy --user $FTP_USER --password $FTP_PASSWORD
