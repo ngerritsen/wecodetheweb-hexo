@@ -16,6 +16,12 @@
     "js:watch": "npm run js; watchify ./themes/wecodetheweb/source/js/_src/main.js -o ./themes/wecodetheweb/source/js/bundle.js"
   },
   "dependencies": {
+    "jquery": "^3.1.1"
+  },
+  "devDependencies": {
+    "browserify": "^12.0.1",
+    "gulp": "^3.9.0",
+    "gulp-util": "^3.0.7",
     "hexo": "^3.1.1",
     "hexo-generator-archive": "^0.1.2",
     "hexo-generator-category": "^0.1.2",
@@ -26,12 +32,10 @@
     "hexo-renderer-marked": "^0.2.4",
     "hexo-renderer-stylus": "^0.3.0",
     "hexo-server": "^0.1.2",
-    "jquery": "^3.1.1"
-  },
-  "devDependencies": {
-    "browserify": "^12.0.1",
-    "gulp": "^3.9.0",
-    "gulp-util": "^3.0.7",
+    "imagemin": "^5.2.2",
+    "imagemin-cli": "^3.0.0",
+    "imagemin-mozjpeg": "^6.0.0",
+    "imagemin-pngquant": "^5.0.0",
     "minimist": "^1.2.0",
     "node-sass": "^3.4.1",
     "uglifyify": "^3.0.1",
