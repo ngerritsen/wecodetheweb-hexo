@@ -4,6 +4,4 @@ node_js:
 cache: yarn
 script:
   - yarn run build
-  - node ./optimize-images.js
-  - ./node_modules/.bin/hexo generate
 after_success: ./node_modules/.bin/gulp deploy --user $FTP_USER --password $FTP_PASSWORD

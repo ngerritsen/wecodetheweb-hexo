@@ -6,9 +6,9 @@
     "version": "3.2.2"
   },
   "scripts": {
-    "build": "npm run build:assets; npm run images; npm run build:hexo",
-    "build:hexo": "hexo clean; hexo generate",
-    "build:assets": "npm run sass; npm run js",
+    "build": "npm run assets; npm run generate; npm run images",
+    "generate": "hexo clean; hexo generate",
+    "assets": "npm run sass; npm run js",
     "serve": "hexo clean; hexo server -p 4040",
     "images": "node ./optimize-images.js",
     "sass": "node-sass ./themes/wecodetheweb/source/_scss/ --output-style compressed -o ./themes/wecodetheweb/source/css/",
@@ -26,8 +26,8 @@
     "hexo-generator-index": "^0.2.0",
     "hexo-generator-tag": "^0.2.0",
     "hexo-renderer-ejs": "^0.2.0",
-    "hexo-renderer-stylus": "^0.3.1",
     "hexo-renderer-marked": "^0.2.10",
+    "hexo-renderer-stylus": "^0.3.1",
     "hexo-server": "^0.2.0",
     "jquery": "^3.1.1"
   },
@@ -41,6 +41,7 @@
     "imagemin-pngquant": "^5.0.0",
     "minimist": "^1.2.0",
     "node-sass": "^3.4.1",
+    "recursive-fs": "^1.0.0",
     "uglifyify": "^3.0.1",
     "vinyl-ftp": "^0.4.5",
     "watchify": "^3.6.0"
