@@ -1,3 +1,4 @@
+---
 title: Using React with ES6 and Browserify
 tags:
   - Browserify

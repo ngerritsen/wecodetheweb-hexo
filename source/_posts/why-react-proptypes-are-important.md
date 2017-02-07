@@ -1,3 +1,4 @@
+---
 title: Why React PropTypes are important
 tags:
   - Javascript

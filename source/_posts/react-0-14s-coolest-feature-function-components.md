@@ -1,3 +1,4 @@
+---
 title: "React 0.14's coolest feature: function components"
 tags:
   - ES6

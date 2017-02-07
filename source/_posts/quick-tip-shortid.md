@@ -1,3 +1,4 @@
+---
 title: 'Quick tip: shortId'
 tags:
   - Javascript

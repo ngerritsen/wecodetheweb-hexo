@@ -1,3 +1,4 @@
+---
 title: Why We code the web is now statically generated
 tags:
   - General

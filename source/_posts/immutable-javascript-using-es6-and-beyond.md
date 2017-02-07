@@ -1,3 +1,4 @@
+---
 title: 'Immutable Javascript using ES6 and beyond'
 tags:
   - ES6

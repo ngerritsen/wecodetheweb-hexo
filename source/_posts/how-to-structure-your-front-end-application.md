@@ -1,3 +1,4 @@
+---
 title: How to structure your front-end application
 tags:
   - General

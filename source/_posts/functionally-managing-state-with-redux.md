@@ -1,3 +1,4 @@
+---
 title: Functionally managing state with Redux
 tags:
   - Flux

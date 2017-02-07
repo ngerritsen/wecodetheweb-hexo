@@ -1,3 +1,4 @@
+---
 title: 'Flux, what and why?'
 tags:
   - ES6

@@ -1,3 +1,4 @@
+---
 title: Why you should ditch Angular controllers for directives
 tags:
   - AngularJS

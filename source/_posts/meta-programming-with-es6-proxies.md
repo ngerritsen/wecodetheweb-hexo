@@ -1,3 +1,4 @@
+---
 title: Meta programming with ES6 Proxies
 tags:
   - ES6
