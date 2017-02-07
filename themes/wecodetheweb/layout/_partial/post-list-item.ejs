@@ -1,0 +1,23 @@
+<article class="post-list--item<%= headline ? ' alt-headline' : '' %><%= subheadline ? ' alt-sub-headline' : '' %>">
+  <% var postUrl = url_for(post.path) %>
+  <% var imgUrl = postUrl + 'main.jpg'%>
+
+  <a href="<%= postUrl %>" title="Read: <%= post.title %>" class="post-list--item-image-link">
+    <div class="post-list--item-image" style="background-image: url('<%= imgUrl %>')"></div>
+  </a>
+
+  <div class="post-list--item-content">
+    <%- partial('./meta-data.ejs', { post: post }) %>
+
+    <h2 class="post-list--item-title">
+      <a href="<%= postUrl %>"><%= post.title %></a>
+    </h2>
+
+    <div class="post-list--item-excerpt">
+      <%- post.excerpt %>
+    </div>
+
+    <% var inlineTagList = true %>
+    <%- partial('./tag-list.ejs') %>
+  </div>
+</article>

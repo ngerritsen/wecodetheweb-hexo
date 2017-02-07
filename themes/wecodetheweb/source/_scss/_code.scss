@@ -1,0 +1,59 @@
+.highlight {
+  background-color: $color-midnight;
+  color: $color-cloud;
+  font-family: Hack, monospace;
+  margin: 0 0 3rem;
+  padding: 1.5rem;
+  overflow: auto;
+
+  pre {
+    font-size: 1.8rem;
+    line-height: 1.4;
+    margin: 0;
+  }
+
+  .gutter {
+    display: none;
+  }
+
+  .keyword,
+  .tag,
+  .variable {
+    color: #f92672;
+
+    .title {
+      color: $color-cloud;
+    }
+  }
+  .string,
+  .tag .value {
+    color: #fd971f
+  }
+
+  .number,
+  .hexcolor {
+    color: #66d9ef;
+  }
+
+  .built_in,
+  .class,
+  .tag .attribute {
+    color: #a6e22e;
+  }
+
+  .comment {
+    color: desaturate(lighten($color-midnight, 25%), 10%);
+  }
+
+  .line {
+    min-height: 1.8rem;
+  }
+}
+
+code {
+  background-color: lighten($color-carrot, 40%);
+  border-radius: 2px;
+  color: darken($color-carrot, 5%);
+  font-size: 1.2em;
+  padding: 0.2rem 0.4rem;
+}

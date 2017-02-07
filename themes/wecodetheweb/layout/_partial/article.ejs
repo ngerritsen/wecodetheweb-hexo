@@ -1,0 +1,51 @@
+<main>
+  <article class="post">
+    <section class="post--heading" style="background-image: url('<%= url_for(post.path) + 'main.jpg' %>');">
+      <div class="post--heading-overlay"></div>
+      <div class="container">
+        <div class="post--heading-content">
+          <h1 class="post--title"><%= post.title %></h1>
+            <%- partial('./tag-list.ejs', { post: post }) %>
+        </div>
+      </div>
+    </section>
+    <div class="container">
+      <section>
+        <%- partial('./tools.ejs', { title: post.title }) %>
+        <%- partial('./meta-data.ejs', { post: post }) %>
+      </section>
+
+      <section class="post--content">
+        <%- post.content %>
+      </section>
+
+      <%- partial('./post-share.ejs', { post: post }) %>
+
+      <section>
+        <h2>Related posts</h2>
+        <div class="post--related">
+          <% get_related_posts().forEach(function (post) { %>
+            <%- partial('./post-block.ejs', { post: post }) %>
+          <% }) %>
+        </div>
+      </section>
+
+      <section class="post--comments" id="disqus_thread">
+        <script>
+        var disqus_config = function () {
+          this.page.url = "<%= url %>";
+          this.page.identifier = <%= post.id %>;
+        };
+
+        (function() {
+          var d = document, s = d.createElement('script');
+          s.src = '//wecodetheweb.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+      </section>
+    </div>
+  </article>
+</main>

@@ -1,0 +1,52 @@
+.post-block {
+  background-size: cover;
+  background-position: center center;
+  height: 30rem;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.post-block--content {
+  background-color: transparentize($color-black, 0.7);
+  bottom: 0;
+  display: block;
+  left: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+
+  &:hover {
+    background-color: transparentize($color-black, 0.5);
+  }
+}
+
+.post-block--title {
+  color: $color-white;
+  padding: 13rem 2rem;
+  position: relative;
+  text-align: center;
+  z-index: 2;
+}
+
+.post-block--excerpt {
+  display: none;
+  font-size: 0.9em;
+
+  strong {
+    font-weight: normal;
+  }
+}
+
+@media only screen and (min-width: $screen-M) {
+  .post-block {
+    float: left;
+    margin-right: 2%;
+    width: 32%;
+
+    &:nth-child(3) {
+      margin-right: 0;
+    }
+  }
+}

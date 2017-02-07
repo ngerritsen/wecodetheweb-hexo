@@ -1,0 +1,28 @@
+.post-nav {
+  @include clearfix;
+
+  margin-bottom: 5rem;
+
+  .prev,
+  .next {
+    background-color: $color-blue;
+    border-radius: 2px;
+    color: white;
+    padding: 0.6rem 1.5rem;
+
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: darken($color-blue, 10%);
+      color: white;
+    }
+  }
+
+  .next {
+    float: right;
+  }
+
+  .page-number {
+    display: none;
+  }
+}

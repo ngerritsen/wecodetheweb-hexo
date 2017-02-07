@@ -1,0 +1,12 @@
+.container {
+  padding: 0 $main-padding-mobile;
+  width: 100%;
+}
+
+@media only screen and (min-width: $screen-S) {
+  .container {
+    margin: 0 auto;
+    max-width: 100rem;
+    padding: 0 $main-padding;
+  }
+}

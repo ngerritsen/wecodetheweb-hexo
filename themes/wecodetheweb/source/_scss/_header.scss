@@ -1,0 +1,38 @@
+$header-height: 9rem;
+
+.header {
+  height: $header-height;
+  width: 100%;
+
+  &.alt-on-post {
+    position: absolute;
+    z-index: 999;
+  }
+}
+
+.header--title {
+  color: $color-midnight;
+  font-size: 3.4rem;
+  font-family: $logo-font;
+  font-weight: bold;
+  height: $header-height;
+  line-height: $header-height;
+  text-transform: lowercase;
+  word-spacing: -0.5ex;
+
+  &:before {
+    color: $color-blue;
+    content: '</>';
+    font-weight: bold;
+    margin-right: 0.8rem;
+  }
+
+  &:hover {
+    color: lighten($color-midnight, 5%);
+  }
+
+  .header.alt-on-post & {
+    color: transparentize($color-white, 0.1);
+    text-shadow: 0 0 6px transparentize($color-midnight, 0.8);
+  }
+}

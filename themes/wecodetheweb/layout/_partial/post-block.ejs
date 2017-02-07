@@ -1,0 +1,8 @@
+<div class="post-block" style="background-image: url('<%= url_for(post.path) + 'main.jpg' %>')">
+  <a href="<%= url_for(post.path) %>" title="Read: <%= post.title %>">
+    <div class="post-block--content">
+      <h2 class="post-block--title"><%= post.title %></h2>
+      <div class="post-block--excerpt"><%- post.excerpt %></div>
+    </div>
+  </a>
+</div>

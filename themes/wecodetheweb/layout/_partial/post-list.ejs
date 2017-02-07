@@ -1,0 +1,9 @@
+<main class="post-list container">
+  <% posts.each(function(post, index) { %>
+    <%- partial('./post-list-item.ejs', {
+      post: post,
+      headline: index === 0 && current === 1,
+      subheadline: (index === 1 || index === 2) && current === 1
+    }) %>
+  <% }) %>
+</main>

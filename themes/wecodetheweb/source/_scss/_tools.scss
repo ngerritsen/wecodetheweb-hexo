@@ -1,0 +1,33 @@
+.tools {
+  background-color: $color-white;
+  border-bottom: 1px solid darken($color-cloud, 2.5%);
+  display: none;
+  left: 0;
+  position: fixed;
+  right: 0;
+  transition: top 0.2s ease;
+  top: 0;
+  z-index: 99;
+
+  &.is-sticky {
+    display: block;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.tools--content {
+  @extend .container;
+}
+
+.tools--title {
+  color: $color-asphalt;
+  font-family: $heading-font;
+  font-weight: bold;
+  height: 2em;
+  line-height: 2em;
+  overflow: hidden;
+  white-space: nowrap;
+}

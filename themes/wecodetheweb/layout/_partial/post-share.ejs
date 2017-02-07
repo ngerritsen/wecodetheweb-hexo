@@ -1,0 +1,28 @@
+<section class="post--share">
+  <script>
+    function popupwindow(url, title, w, h) {
+      var left = (screen.width/2)-(w/2);
+      var top = (screen.height/2)-(h/2);
+      return window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width='+w+', height='+h+', top='+top+', left='+left);
+    }
+  </script>
+
+  <a
+    class="post--share-icon"
+    href="https://twitter.com/intent/tweet?status=<%= post.title %>+<%= post.permalink %>"
+    target="_blank"
+    onclick="event.preventDefault(); popupwindow('https://twitter.com/intent/tweet?status=<%= post.title %>+<%= post.permalink %>', 'Tweet', 720, 500)"
+    title="Tweet this post on Twitter"
+  >
+    <i class="fa fa-twitter"></i>
+  </a>
+  <a
+    class="post--share-icon"
+    href="http://www.linkedin.com/shareArticle?mini=true&url=<%= post.permalink %>&title=<%= post.title %>&source=wecodethweb.com"
+    target="_blank"
+    onclick="event.preventDefault(); popupwindow('http://www.linkedin.com/shareArticle?mini=true&url=<%= post.permalink %>&title=<%= post.title %>&source=wecodethweb.com', 'Tweet', 720, 500)"
+    title="Share this post on LinkedIn"
+  >
+    <i class="fa fa-linkedin-square"></i>
+  </a>
+</section>

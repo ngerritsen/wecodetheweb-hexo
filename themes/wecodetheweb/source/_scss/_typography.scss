@@ -1,0 +1,80 @@
+html {
+  font-size: 62.5%;
+}
+
+body {
+  color: $color-text;
+  font-family: $text-font;
+  font-size: 1.8rem;
+}
+
+a,
+a:visited {
+  color: $color-blue;
+  text-decoration: none;
+
+  &:hover,
+  &:active,
+  &:focus {
+    color: darken($color-blue, 10%);
+    text-decoration: none;
+  }
+}
+
+p,
+li,
+code,
+pre {
+  font-size: 1em;
+  line-height: 1.8;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: $heading-font;
+  margin: 0 0 0.8em 0;
+}
+
+h2 {
+  font-size: 1.4em;
+  margin-top: 2em;
+}
+
+h3 {
+  font-size: 1.2em;
+}
+
+p,
+pre {
+  margin: 0 0 2em 0;
+}
+
+ul, ol {
+  margin: 0 0 3rem;
+  padding-left: 3rem;
+}
+
+blockquote {
+  margin: 0 0 3.5rem;
+  padding: 0 0 0 2.5em;
+  position: relative;
+  opacity: 0.6;
+
+  p {
+    margin: 0;
+  }
+
+  &:before {
+    content: '\f10e';
+    font-family: 'FontAwesome';
+    left: 0;
+    position: absolute;
+    top: 0.5rem;
+  }
+}
+
+i {
+  min-width: 1.5rem;
+}
