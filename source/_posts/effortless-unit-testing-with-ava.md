@@ -23,7 +23,7 @@ First of all AVA is **simple**. It's really easy to set up. First install ava: `
 import test from 'ava'
 
 test('one plus one is two', t => {
-  t.equal(1 + 1, 2)
+  t.is(1 + 1, 2)
 })
 ```
 
@@ -64,11 +64,11 @@ Another nifty feature that you can only run the test that you are working on. Th
 
 ```js
 test('one plus one is two', t => {
-  t.equal(1 + 1, 2)
+  t.is(1 + 1, 2)
 })
 
 test.only('two plus one is three', t => {
-  t.equal(1 + 2, 3)
+  t.is(1 + 2, 3)
 })
 ```
 
