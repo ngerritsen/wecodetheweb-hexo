@@ -2,7 +2,7 @@
   padding-top: 1rem;
 }
 
-.post-list--item {
+.post-list__item {
   border-bottom: 1px solid darken($color-white, 15%);
   padding-bottom: 3rem;
   margin-bottom: 5rem;
@@ -12,7 +12,7 @@
   }
 }
 
-.post-list--item-title {
+.post-list__item-title {
   a,
   a:visited {
     color: $color-asphalt;
@@ -27,7 +27,7 @@
 }
 
 
-.post-list--item-image {
+.post-list__item-image {
   @include background-img($color-midnight);
 
   height: 22rem;
@@ -35,7 +35,7 @@
   width: 100%;
 }
 
-.post-list--item-excerpt {
+.post-list__item-excerpt {
   p {
     margin-bottom: 1em;
   }
@@ -45,11 +45,15 @@
   }
 }
 
-.alt-headline.post-list--item ,
-.alt-sub-headline.post-list--item {
+.post-list__item-title {
+  margin: 2.1rem 0 1rem 0;
+}
+
+.alt-headline.post-list__item ,
+.alt-sub-headline.post-list__item {
   display: block;
 
-  .post-list--item-image {
+  .post-list__item-image {
     height: 30rem;
     margin-bottom: 1.5rem;
     width: 100%;
@@ -57,18 +61,18 @@
 }
 
 @media only screen and (min-width: $screen-M) {
-  .post-list--item {
+  .post-list__item {
     @include clearfix;
 
     border-bottom: none;
     display: flex;
   }
 
-  .post-list--item-image-link {
+  .post-list__item-image-link {
     min-width: 27rem;
   }
 
-  .post-list--item-image {
+  .post-list__item-image {
     @include background-img($color-midnight);
 
     float: left;
@@ -76,7 +80,7 @@
     width: 24rem;
   }
 
-  .alt-sub-headline.post-list--item  {
+  .alt-sub-headline.post-list__item  {
     clear: none;
     float: left;
     margin-right: 4%;
@@ -86,7 +90,7 @@
       margin-right: 0;
     }
 
-    .post-list--item-image {
+    .post-list__item-image {
       height: 30rem;
     }
   }

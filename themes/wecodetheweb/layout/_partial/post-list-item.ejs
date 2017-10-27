@@ -1,19 +1,19 @@
-<article class="post-list--item<%= headline ? ' alt-headline' : '' %><%= subheadline ? ' alt-sub-headline' : '' %>">
+<article class="post-list__item<%= headline ? ' alt-headline' : '' %><%= subheadline ? ' alt-sub-headline' : '' %>">
   <% var postUrl = url_for(post.path) %>
   <% var imgUrl = postUrl + 'main.jpg'%>
 
-  <a href="<%= postUrl %>" title="Read: <%= post.title %>" class="post-list--item-image-link">
-    <div class="post-list--item-image" style="background-image: url('<%= imgUrl %>')"></div>
+  <a href="<%= postUrl %>" title="Read: <%= post.title %>" class="post-list__item-image-link">
+    <div class="post-list__item-image" style="background-image: url('<%= imgUrl %>')"></div>
   </a>
 
-  <div class="post-list--item-content">
+  <div class="post-list__item-content">
     <%- partial('./meta-data.ejs', { post: post }) %>
 
-    <h2 class="post-list--item-title">
+    <h2 class="post-list__item-title">
       <a href="<%= postUrl %>"><%= post.title %></a>
     </h2>
 
-    <div class="post-list--item-excerpt">
+    <div class="post-list__item-excerpt">
       <%- post.excerpt %>
     </div>
 

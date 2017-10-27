@@ -2,19 +2,19 @@
   overflow-x: hidden;
 }
 
-.post--content,
-.post--comments,
-.post--related {
+.post__content,
+.post__comments,
+.post__related {
   margin-bottom: 3rem;
   max-width: 100%;
   overflow: hidden;
 }
 
-.post--heading {
+.post__heading {
   @include background-img($color-midnight);
 
   height: 42rem;
-  margin-bottom: 6rem;
+  margin-bottom: 4rem;
   position: relative;
   width: 100%;
 
@@ -23,7 +23,7 @@
   }
 }
 
-.post--heading-overlay {
+.post__heading-overlay {
   background-color: darken($color-asphalt, 5%);
   bottom: 0;
   opacity: 0.2;
@@ -34,7 +34,7 @@
   transition: opacity 0.1s;
 }
 
-.post--heading-content {
+.post__heading-content {
   bottom: 1.5rem;
   color: $color-white;
   display: block;
@@ -43,36 +43,36 @@
   width: 100%;
 }
 
-.post--title {
+.post__title {
   color: $color-white;
   font-size: 3.1rem;
   margin: 0 0 2rem;
   max-width: 80%;
 }
 
-.post--share {
+.post__share {
   border-top: 1px solid lighten($color-silver, 5%);
   margin-bottom: 3rem;
   padding: 1.6rem 0;
   text-align: right;
 }
 
-.post--share-icon,
-.post--share-icon:visited {
+.post__share-icon,
+.post__share-icon:visited {
   font-size: 3rem;
   margin-right: 0.5rem;
 }
 
-&.alt-small .post--content {
+&.alt-small .post__content {
   font-size: 90%;
 }
 
-&.alt-large .post--content {
+&.alt-large .post__content {
   font-size: 110%;
 }
 
 @media only screen and (min-width: $screen-M) {
-  .post--heading {
+  .post__heading {
     height: 50rem;
   }
 }

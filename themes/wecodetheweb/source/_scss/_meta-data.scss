@@ -5,7 +5,7 @@
   margin-bottom: 4.5rem;
 }
 
-.meta-data--avatar {
+.meta-data__avatar {
   border: 2px solid darken($color-white, 5%);
   border-radius: 50%;
   display: inline-block;
@@ -16,8 +16,8 @@
   width: 3.2rem;
 }
 
-.meta-data--link,
-.meta-data--link:visited {
+.meta-data__link,
+.meta-data__link:visited {
   color: darken($color-silver, 5%);
   padding: 0 4px;
 
@@ -28,20 +28,20 @@
   }
 }
 
-.meta-data--date-small {
+.meta-data__date-small {
   display: inline;
 }
 
-.meta-data--date-large {
+.meta-data__date-large {
   display: none;
 }
 
 @media only screen and (min-width: $screen-S) {
-  .meta-data--date-small {
+  .meta-data__date-small {
     display: none;
   }
 
-  .meta-data--date-large {
+  .meta-data__date-large {
     display: inline;
   }
 }

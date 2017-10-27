@@ -1,4 +1,4 @@
-<section class="post--share">
+<section class="post__share">
   <script>
     function popupwindow(url, title, w, h) {
       var left = (screen.width/2)-(w/2);
@@ -8,7 +8,7 @@
   </script>
 
   <a
-    class="post--share-icon"
+    class="post__share-icon"
     href="https://twitter.com/intent/tweet?status=<%= post.title %>+<%= post.permalink %>"
     target="_blank"
     onclick="event.preventDefault(); popupwindow('https://twitter.com/intent/tweet?status=<%= post.title %>+<%= post.permalink %>', 'Tweet', 720, 500)"
@@ -17,7 +17,7 @@
     <i class="fa fa-twitter"></i>
   </a>
   <a
-    class="post--share-icon"
+    class="post__share-icon"
     href="http://www.linkedin.com/shareArticle?mini=true&url=<%= post.permalink %>&title=<%= post.title %>&source=wecodethweb.com"
     target="_blank"
     onclick="event.preventDefault(); popupwindow('http://www.linkedin.com/shareArticle?mini=true&url=<%= post.permalink %>&title=<%= post.title %>&source=wecodethweb.com', 'Tweet', 720, 500)"

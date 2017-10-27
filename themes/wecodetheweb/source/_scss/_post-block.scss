@@ -7,7 +7,7 @@
   margin-bottom: 2rem;
 }
 
-.post-block--content {
+.post-block__content {
   background-color: transparentize($color-black, 0.7);
   bottom: 0;
   display: block;
@@ -22,7 +22,7 @@
   }
 }
 
-.post-block--title {
+.post-block__title {
   color: $color-white;
   padding: 13rem 2rem;
   position: relative;
@@ -30,7 +30,7 @@
   z-index: 2;
 }
 
-.post-block--excerpt {
+.post-block__excerpt {
   display: none;
   font-size: 0.9em;
 

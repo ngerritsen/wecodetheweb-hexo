@@ -1,10 +1,10 @@
 <main>
   <article class="post">
-    <section class="post--heading" style="background-image: url('<%= url_for(post.path) + 'main.jpg' %>');">
-      <div class="post--heading-overlay"></div>
+    <section class="post__heading" style="background-image: url('<%= url_for(post.path) + 'main.jpg' %>');">
+      <div class="post__heading-overlay"></div>
       <div class="container">
-        <div class="post--heading-content">
-          <h1 class="post--title"><%= post.title %></h1>
+        <div class="post__heading-content">
+          <h1 class="post__title"><%= post.title %></h1>
             <%- partial('./tag-list.ejs', { post: post }) %>
         </div>
       </div>
@@ -15,7 +15,7 @@
         <%- partial('./meta-data.ejs', { post: post }) %>
       </section>
 
-      <section class="post--content">
+      <section class="post__content">
         <%- post.content %>
       </section>
 
@@ -23,14 +23,14 @@
 
       <section>
         <h2>Related posts</h2>
-        <div class="post--related">
+        <div class="post__related">
           <% get_related_posts().forEach(function (post) { %>
             <%- partial('./post-block.ejs', { post: post }) %>
           <% }) %>
         </div>
       </section>
 
-      <section class="post--comments" id="disqus_thread">
+      <section class="post__comments" id="disqus_thread">
         <script>
         var disqus_config = function () {
           this.page.url = "<%= url %>";

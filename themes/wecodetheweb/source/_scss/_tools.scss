@@ -18,11 +18,11 @@
   }
 }
 
-.tools--content {
+.tools__content {
   @extend .container;
 }
 
-.tools--title {
+.tools__title {
   color: $color-asphalt;
   font-family: $heading-font;
   font-weight: bold;
