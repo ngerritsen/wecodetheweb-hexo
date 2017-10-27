@@ -63,14 +63,6 @@
   margin-right: 0.5rem;
 }
 
-&.alt-small .post__content {
-  font-size: 90%;
-}
-
-&.alt-large .post__content {
-  font-size: 110%;
-}
-
 @media only screen and (min-width: $screen-M) {
   .post__heading {
     height: 50rem;
