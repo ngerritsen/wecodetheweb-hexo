@@ -1,13 +1,13 @@
-var gulp = require('gulp');
-var ftp = require('vinyl-ftp');
-var gutil = require('gulp-util');
-var minimist = require('minimist');
-var args = minimist(process.argv.slice(2));
+const gulp = require('gulp');
+const ftp = require('vinyl-ftp');
+const gutil = require('gulp-util');
+const minimist = require('minimist');
+const args = minimist(process.argv.slice(2));
 
 gulp.task('deploy', function() {
-  var remotePath = '/public_html/wecodetheweb/';
-  var conn = ftp.create({
-    host: 'wecodetheweb.com',
+  const remotePath = '/public_html/wecodetheweb/';
+  const conn = ftp.create({
+    host: 'ftp.carehr.nl',
     user: args.user,
     password: args.password,
     log: gutil.log
