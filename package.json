@@ -8,15 +8,11 @@
   "scripts": {
     "build": "npm run assets; npm run generate; npm run images",
     "generate": "hexo clean; hexo generate",
-    "assets": "npm run sass; npm run js",
+    "watch": "concurrently -n 'hexo,sass' 'hexo clean; hexo server --draft' 'npm run sass:watch'",
     "serve": "hexo clean; hexo server",
-    "serve:draft": "hexo clean; hexo server --draft",
     "images": "node ./optimize-images.js",
     "sass": "node-sass ./themes/wecodetheweb/source/_scss/ --output-style compressed -o ./themes/wecodetheweb/source/css/",
-    "sass:dev": "node-sass ./themes/wecodetheweb/source/_scss/ -o ./themes/wecodetheweb/source/css/",
-    "sass:watch": "npm run sass:dev; node-sass -w ./themes/wecodetheweb/source/_scss/ -o ./themes/wecodetheweb/source/css/",
-    "js": "browserify -g uglifyify ./themes/wecodetheweb/source/js/_src/main.js -o ./themes/wecodetheweb/source/js/bundle.js",
-    "js:watch": "npm run js; watchify ./themes/wecodetheweb/source/js/_src/main.js -o ./themes/wecodetheweb/source/js/bundle.js"
+    "sass:watch": "npm run sass:dev; node-sass -w ./themes/wecodetheweb/source/_scss/ -o ./themes/wecodetheweb/source/css/"
   },
   "dependencies": {
     "global": "^4.3.1",
@@ -29,11 +25,10 @@
     "hexo-renderer-ejs": "^0.2.0",
     "hexo-renderer-marked": "^0.2.10",
     "hexo-renderer-stylus": "^0.3.1",
-    "hexo-server": "^0.2.0",
-    "jquery": "^3.1.1"
+    "hexo-server": "^0.2.0"
   },
   "devDependencies": {
-    "browserify": "^12.0.1",
+    "concurrently": "^3.5.0",
     "gulp": "^3.9.0",
     "gulp-util": "^3.0.7",
     "imagemin": "^5.2.2",
@@ -43,8 +38,6 @@
     "minimist": "^1.2.0",
     "node-sass": "^4.5.3",
     "recursive-fs": "^1.0.0",
-    "uglifyify": "^3.0.1",
-    "vinyl-ftp": "^0.4.5",
-    "watchify": "^3.6.0"
+    "vinyl-ftp": "^0.4.5"
   }
 }
