@@ -69,6 +69,8 @@
   }
 
   .post-list__item-image-link {
+    @include clearfix;
+
     min-width: 27rem;
   }
 
