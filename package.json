@@ -6,7 +6,7 @@
     "version": "3.3.9"
   },
   "scripts": {
-    "build": "npm run assets; npm run generate; npm run images",
+    "build": "npm run sass; npm run generate; npm run images",
     "generate": "hexo clean; hexo generate",
     "watch": "concurrently -n 'hexo,sass' 'hexo clean; hexo server --draft' 'npm run sass:watch'",
     "serve": "hexo clean; hexo server",

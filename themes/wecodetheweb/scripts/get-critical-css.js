@@ -1,4 +1,4 @@
-var fs = require('fs')
+const fs = require('fs')
 
 function getCriticalCss(filename) {
   return fs.readFileSync('./themes/wecodetheweb/source/css/main.critical.css')
