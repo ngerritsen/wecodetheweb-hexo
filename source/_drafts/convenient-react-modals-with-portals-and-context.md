@@ -210,7 +210,8 @@ ReactDOM.render(
   <ModalProvider>
     <App/>
   </ModalProvider>,
-document.getElementById('app-root'));
+  document.getElementById('app-root')
+);
 ```
 
 Our whole app now potentially has access to this context, for our case this is what we want, but in some cases it makes sense to put a provider on a lower level.
@@ -290,7 +291,7 @@ const App = () => (
 );
 ```
 
-The app component got a few lines longer but now with a completely reusable modal. I mean, we could add another modal and it would just work as long as it has another id. Try to add a goodbye message below the 'Hello world' text for instance:
+The app component got a few lines longer but now with a completely reusable modal. We can now easily add another modal and it would just work as long as it has a unique id. We can do this in any spot in our application. Try to add a goodbye message below the 'Hello world' text for instance:
 
 ```js
 // In the app component
@@ -306,3 +307,83 @@ The app component got a few lines longer but now with a completely reusable moda
   )}
 </Modal>
 ```
+
+## What about Redux?
+
+Ofcourse with React, you can't really get around Redux. In this example we use React Context to distribute the modal state and methods to all the views. When using Redux with React using the [react-redux](https://www.npmjs.com/package/react-redux) library, you don't have to do this. You can create a simple reducer:
+
+```js
+function modalReducer(state = { openModalId: '' }, action) {
+  switch (action.type) {
+    case 'OPEN_MODAL': return { openModalId: action.modalId };
+    case 'CLOSE_MODAL': return { openModalId: '' };
+    default: return state;
+  }
+}
+```
+
+with the following actions:
+
+```js
+const openModal = modalId => { type: 'OPEN_MODAL', modalId: action.modalId };
+const closeModal = () => { type: 'CLOSE_MODAL' };
+```
+
+and then connect the Modal to redux, instead of using context:
+
+```js
+let Modal = ({ id, children, openModalId }) => {
+  if (openModalId === id) {
+    return ReactDOM.createPortal(
+      <div className="overlay">
+        <div className="modal">
+          {children(closeModal)}
+        </div>
+      </div>,
+      document.getElementById('modal-root')
+    );
+  }
+
+  return null;
+};
+
+Modal = connect({ openModalId } => { openModalId }, { closeModal }, Modal);
+```
+
+We need to do the same for the toggle:
+
+```js
+let ModalToggle = ({ id, children, openModal }) => (
+  children(() => openModal(id))
+);
+
+ModalToggle = connect(undefined, { openModal }, ModalToggle);
+```
+
+And change our app boilerplate to use Redux:
+
+```js
+const store = Redux.createStore(modalReducer);
+
+ReactDOM.render(
+  <ReactRedux.Provider store={store}>
+    <App/>
+  </ReactRedux.Provider>,
+  document.getElementById('app-root')
+);
+```
+
+Our application now uses Redux to manage the state and the actions for opening and closing the modal. This code also makes the `ModalProvider` obsolete, as Redux handles all of this.
+
+> Note that react-redux still uses context internally to distribute the state to the components wrapped in `connect`, but it's always nice to not having to implement that ourselves and benefit from all other Redux features.
+
+## Conclusion
+
+So, we used context to make the modal state available in all views. We used portals so that we can put the modal everywhere in the tree, but render it in the same place visually. You can view the code in this [CodePen](https://codepen.io/aesthetickz/pen/RyEabw).
+
+## Reference
+
+- React Context docs: [reactjs.org/docs/context.html](https://reactjs.org/docs/context.html).
+- React Portals docs: [reactjs.org/docs/portals.html](https://reactjs.org/docs/portals.html).
+- React Fragment docs: [reactjs.org/docs/fragments.html](https://reactjs.org/docs/fragments.html).
+- Example code: [codepen.io/aesthetickz/pen/RyEabw](https://codepen.io/aesthetickz/pen/RyEabw).
