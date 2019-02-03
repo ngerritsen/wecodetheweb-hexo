@@ -1,4 +1,5 @@
-const fs = require('fs')
+'use strict';
+
 const path = require('path')
 const imagemin = require('imagemin')
 const imageminMozjpeg = require('imagemin-mozjpeg')
@@ -8,8 +9,8 @@ const recursiveFs = require('recursive-fs')
 const PUBLIC_FOLDER = './public'
 const IMAGE_EXTENSIONS = ['.jpg', '.png']
 
-recursiveFs.readdirr('./public', (err, dirs, files) => {
-  const filepaths = files
+recursiveFs.readdirr('./public', (_, __, files) => {
+  files
     .filter(file => IMAGE_EXTENSIONS.includes(path.extname(file)))
     .forEach(filepath => {
       imagemin([filepath], path.dirname(filepath), {

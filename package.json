@@ -10,9 +10,10 @@
     "generate": "hexo clean; hexo generate",
     "watch": "concurrently -n 'hexo,sass' 'hexo clean; hexo server --draft' 'npm run sass:watch'",
     "serve": "hexo clean; hexo server",
-    "images": "node ./optimize-images.js",
+    "images": "node ./optimizeImages.js",
     "sass": "node-sass ./themes/wecodetheweb/source/_scss/ --output-style compressed -o ./themes/wecodetheweb/source/css/",
-    "sass:watch": "npm run sass:dev; node-sass -w ./themes/wecodetheweb/source/_scss/ -o ./themes/wecodetheweb/source/css/"
+    "sass:watch": "npm run sass:dev; node-sass -w ./themes/wecodetheweb/source/_scss/ -o ./themes/wecodetheweb/source/css/",
+    "upload": "node ./generateUploadScript.js; sh upload.sh"
   },
   "dependencies": {
     "global": "^4.3.1",
@@ -29,15 +30,11 @@
   },
   "devDependencies": {
     "concurrently": "^3.5.0",
-    "gulp": "^3.9.0",
-    "gulp-util": "^3.0.7",
     "imagemin": "^5.2.2",
     "imagemin-cli": "^3.0.0",
     "imagemin-mozjpeg": "^6.0.0",
     "imagemin-pngquant": "^5.0.0",
-    "minimist": "^1.2.0",
     "node-sass": "^4.5.3",
-    "recursive-fs": "^1.0.0",
-    "vinyl-ftp": "^0.4.5"
+    "recursive-fs": "^1.0.0"
   }
 }
