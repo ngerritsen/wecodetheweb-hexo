@@ -12,8 +12,7 @@
     "serve": "hexo clean; hexo server",
     "images": "node ./optimizeImages.js",
     "sass": "node-sass ./themes/wecodetheweb/source/_scss/ --output-style compressed -o ./themes/wecodetheweb/source/css/",
-    "sass:watch": "npm run sass:dev; node-sass -w ./themes/wecodetheweb/source/_scss/ -o ./themes/wecodetheweb/source/css/",
-    "upload": "node ./generateUploadScript.js; sh upload.sh"
+    "sass:watch": "npm run sass:dev; node-sass -w ./themes/wecodetheweb/source/_scss/ -o ./themes/wecodetheweb/source/css/"
   },
   "dependencies": {
     "global": "^4.3.1",
