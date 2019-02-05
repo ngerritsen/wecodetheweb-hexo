@@ -4,5 +4,5 @@ node_js:
 script:
   - npm run build
 after_success:
-  - cd public; zip -r ../wecodetheweb.zip *
+  - cd public; zip -r ../wecodetheweb.zip *; cd ..
   - "curl -F 'data=@wecodetheweb.zip' -H 'X-Key: '$DEPLOY_KEY -H 'X-ExtractTo: wecodetheweb' https://carehr.nl/deploy/"
