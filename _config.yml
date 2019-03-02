@@ -39,8 +39,12 @@ render_drafts: false
 post_asset_folder: true
 relative_link: false
 future: true
+prism_plugin:
+  mode: 'preprocess'
+  theme: 'tomorrow'
+  line_number: false
 highlight:
-  enable: true
+  enable: false
   line_number: true
   auto_detect: true
   tab_replace:

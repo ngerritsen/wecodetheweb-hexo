@@ -20,7 +20,7 @@ The last sentence may have sounded like a sin to you. But let's take a moment t
 
 So how do React inline styles look like?
 
-```javascript
+```jsx
 class PrettyMessage extends Component {
   render () {
     return <p style={prettyStyle}>Hello</p>
@@ -39,7 +39,7 @@ The CSS itself is just a Javascript object, the properties are _camelCase_ in st
 
 This allows you to make really independent React components! You have your Javascript, markup and styling in one component. But what if you wanted to do SASS-like operations, like lighten a color? It's very easy with [TinyColor](https://github.com/bgrins/TinyColor)!
 
-```javascript
+```jsx
 import tinycolor from 'tinycolor2'
 
 const BLACK = '#000'
@@ -53,7 +53,7 @@ const prettyStyle = {
 
 Because this is all just Javascript, we have endless possibilities! We could also compose styles from a base style with `Object.assign()`.
 
-```javascript
+```jsx
 const BLACK = '#000'
 const RED = '#ff0000'
 const WHITE = '#fff'
@@ -77,7 +77,7 @@ const styles = {
 
 We could now use these styles in our component as follows:
 
-```javascript
+```jsx
 class PrettyMessage extends Component {
   render () {
     const { dark } = this.props
@@ -91,7 +91,7 @@ class PrettyMessage extends Component {
 
 That's nice. Styles are now just Javascript objects. We can do everything with them Javascript can do. How about this function:
 
-```javascript
+```jsx
 function createButton(color) {
   const isLight = tinycolor(color).isLight()
 
@@ -107,7 +107,7 @@ It creates a button style based on the color you give it. That color will be the
 
 Now we want to use _hover_ styles on our button. This is a tough one, because we use inline styles instead of CSS, we can't use `:hover`. This is where [Radium](http://projects.formidablelabs.com/radium/) comes in. It's a decorator for React classes, which allows you to use a `:hover` property in your style objects. It uses Javascript to detect if the user is hovering over an element or not and switches the styles accordingly. Let's do the button example with a hover style:
 
-```javascript
+```jsx
 import React, { Component } from 'react'
 import Radium from 'radium'
 import tinycolor from 'tinycolor2'

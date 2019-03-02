@@ -11,7 +11,7 @@ date: 2015-06-02 08:56:04
 
 _Props_ are the mechanism _React_ uses to let components communicate with each other. A parent component can pass it's child(ren) named prop values, which the child can then use in its internal logic. <!-- more --> It looks something like this:
 
-```javascript
+```jsx
 const ChildComponent = React.createClass({
   render() {
     return (
@@ -35,7 +35,7 @@ Imagine you are working in a bigger project with many, more complex components. 
 
 This is where Reacts _propTypes_ come in. It's essentially a dictionary where you define what props your component needs and what type(s) they should be. How doesthis look like?
 
-```javascript
+```jsx
 const ChildComponent = React.createClass({
     propTypes: {
       message: React.PropTypes.string.isRequired
@@ -53,7 +53,7 @@ const ChildComponent = React.createClass({
 
 _ChildComponent_ does exactly the same as before, however, your fellow developer will know by reading the _propTypes_ that he needs to pass in a property called message of type string. The _isRequired_ property tells you beloved colleagues that the property is required for the component to work. Here are a few more possibilities:
 
-```javascript
+```jsx
 propTypes: {
   //Id can be a number, or a string, but it needs to be defined!
   id: React.PropTypes.oneOfType([

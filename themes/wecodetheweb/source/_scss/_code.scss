@@ -1,59 +1,17 @@
-.highlight {
-  background-color: $color-midnight;
-  color: $color-cloud;
-  font-family: Hack, monospace;
-  margin: 0 0 3rem;
-  padding: 1.5rem;
-  overflow: auto;
-
-  pre {
-    font-size: 15px;
-    line-height: 1.4;
-    margin: 0;
-  }
-
-  .gutter {
-    display: none;
-  }
-
-  .keyword,
-  .tag,
-  .variable {
-    color: #f92672;
-
-    .title {
-      color: $color-cloud;
-    }
-  }
-  .string,
-  .tag .value {
-    color: #fd971f
-  }
-
-  .number,
-  .hexcolor {
-    color: #66d9ef;
-  }
-
-  .built_in,
-  .class,
-  .tag .attribute {
-    color: #a6e22e;
-  }
-
-  .comment {
-    color: desaturate(lighten($color-midnight, 25%), 10%);
-  }
-
-  .line {
-    min-height: 1.8rem;
-  }
+code {
+  font-family: Menlo, Monaco, "Courier New", monospace;
 }
 
-code {
-  background-color: lighten($color-carrot, 40%);
+pre[class*="language-"] {
+  font-size: 0.9em;
   border-radius: 2px;
+  margin-bottom: 2em !important;
+}
+
+code:not([class*='language']) {
+  font-size: 0.9em;
+  border-radius: 2px;
+  background-color: lighten($color-carrot, 42%);
   color: darken($color-carrot, 5%);
-  font-size: 1.2em;
   padding: 0.2rem 0.4rem;
 }
