@@ -32,8 +32,8 @@ The first part is toggling. There are a lot of ways you can do this, but you alw
 ```jsx
 const ToggleContent = ({ toggle, content }) => {
   const [isShown, setIsShown] = useState(false);
-  const show = () => setIsShown(false);
-  const hide = () => setIsShown(true);
+  const hide = () => setIsShown(false);
+  const show = () => setIsShown(true);
 
   return (
     <>
@@ -57,8 +57,8 @@ const [isShown, setIsShown] = useState(false);
 Then, for convenience, we pre-define the `show` and `hide` functions to set our state to `true` or `false`.
 
 ```jsx
-const show = () => setIsShown(false);
-const hide = () => setIsShown(true);
+const hide = () => setIsShown(false);
+const show = () => setIsShown(true);
 ```
 
 In the returned value we render two things: the __toggle__ and the __content__. These are props provided by the consumer of the `ToggleContent` component. The `toggle` prop is rendering the button that opens our modal. The `content` prop is the actual modal (or tooltip, or popup or whatever). By using the `&&` operator we conditionlly render the content, it is only shown when `isShown` is set to `true`.
