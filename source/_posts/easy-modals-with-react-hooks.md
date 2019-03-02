@@ -31,14 +31,14 @@ The first part is toggling. There are a lot of ways you can do this, but you alw
 
 ```jsx
 const ToggleContent = ({ toggle, content }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const close = () => setIsOpen(false);
-  const open = () => setIsOpen(true);
+  const [isShown, setIsShown] = useState(false);
+  const show = () => setIsShown(false);
+  const hide = () => setIsShown(true);
 
   return (
     <>
-      {toggle(open)}
-      {isOpen && content(close)}
+      {toggle(show)}
+      {isShown && content(hide)}
     </>
   );
 };
@@ -51,26 +51,26 @@ First of all this is a _functional_ React component. You are all probably famili
 There are several hooks you can use, but in this case we are only going to use the `useState` hook. We need it to keep track of if our modal is open or closed. By calling `useState(initialValue)` on the top of our component, we tell React to create a state value, in this case we set it to be `false` initially. The `useState` hook returns us an array of two things, the _current value_ of the state and a _setter function_ to update the state.
 
 ```jsx
-const [isOpen, setIsOpen] = useState(false);
+const [isShown, setIsShown] = useState(false);
 ```
 
-Then, for convenience, we pre-define the `open` and `close` functions to set our state to `true` or `false`.
+Then, for convenience, we pre-define the `show` and `hide` functions to set our state to `true` or `false`.
 
 ```jsx
-const close = () => setIsOpen(false);
-const open = () => setIsOpen(true);
+const show = () => setIsShown(false);
+const hide = () => setIsShown(true);
 ```
 
-In the returned value we render two things: the __toggle__ and the __content__. These are props provided by the consumer of the `ToggleContent` component. The `toggle` prop is rendering the button that opens our modal. The `content` prop is the actual modal (or tooltip, or popup or whatever). By using the `&&` operator we conditionlly render the content, it is only shown when `isOpen` is set to `true`.
+In the returned value we render two things: the __toggle__ and the __content__. These are props provided by the consumer of the `ToggleContent` component. The `toggle` prop is rendering the button that opens our modal. The `content` prop is the actual modal (or tooltip, or popup or whatever). By using the `&&` operator we conditionlly render the content, it is only shown when `isShown` is set to `true`.
 
 ```jsx
 <>
-  {toggle(open)}
-  {isOpen && content(close)}
+  {toggle(show)}
+  {isShown && content(hide)}
 </>
 ```
 
-You might find it strange _how_ we render the props passed in by the user. You might be used to rendering props containing content like this: `{toggle}`. But in this case we are using a technique called [render props](https://reactjs.org/docs/render-props.html). This means that these props are _functions_ that _return_ the content, which is why it looks like: `{toggle(open)}`. Doing this allows us to pass the `open` and `close` functions to the consumer.
+You might find it strange _how_ we render the props passed in by the user. You might be used to rendering props containing content like this: `{toggle}`. But in this case we are using a technique called [render props](https://reactjs.org/docs/render-props.html). This means that these props are _functions_ that _return_ the content, which is why it looks like: `{toggle(show)}`. Doing this allows us to pass the `show` and `hide` functions to the consumer.
 
 > What are those weird `<> </>` elements? These are [React Fragements](https://reactjs.org/docs/fragments.html), elements that are themselves __NOT__ rendered to the actual DOM, but their children __ARE__. They are merely there to wrap our toggle and content elements into a single, virtual element. This is because a React component is required to return only one element.
 
@@ -91,11 +91,11 @@ const App = () => (
     Click to reveal a secret:
 
     <ToggleContent
-      toggle={open => <button onClick={open}>Open</button>}
-      content={close => (
+      toggle={show => <button onClick={show}>Open</button>}
+      content={hide => (
         <p>
           There is no spoon...
-          <button onClick={close}>Close</button>
+          <button onClick={hide}>Close</button>
         </p>
       )}
     />
@@ -105,11 +105,11 @@ const App = () => (
 ReactDOM.render(<App />, document.getElementById('app'));
 ```
 
-First off we pass in the the toggle itself. It's a simple button, but the interesting part is that it is wrapped in an arrow function, this is how you pass in a _render prop_. Because we do it like this, the button now has access to the `open` function, so that we can open the toggle on click.
+First off we pass in the the toggle itself. It's a simple button, but the interesting part is that it is wrapped in an arrow function, this is how you pass in a _render prop_. Because we do it like this, the button now has access to the `show` function, so that we can open the modal on click.
 
-For the content we do the same as for the toggle, this time it gets the `close` function, so that we can use it for a close button in the modal.
+For the content we do the same as for the toggle, this time it gets the `hide` function, so that we can use it for a close button in the modal.
 
-> In this example the `ToggleContent` component provides us with only one argument for each render prop. But you could make it even more flexible by passing the `open`, `close` and `isOpen` arguments to both render props. This way you can do even more complex interactions in your user interface.
+> In this example the `ToggleContent` component provides us with only one argument for each render prop. But you could make it even more flexible by passing the `show`, `hide` and `isShown` arguments to both render props. This way you can do even more complex interactions in your user interface.
 
 ## Creating an actual Modal
 
@@ -156,11 +156,11 @@ const App = () => (
     Click to reveal a secret:
 
     <ToggleContent
-      toggle={open => <button onClick={open}>Open</button>}
-      content={close => (
+      toggle={show => <button onClick={show}>Open</button>}
+      content={hide => (
         <Modal>
           There is no spoon...
-          <button onClick={close}>Close</button>
+          <button onClick={hide}>Close</button>
         </Modal>
       )}
     />
@@ -172,7 +172,7 @@ Note that only the `Modal` part will be rendered in `#modal-root`. The button to
 
 ## Conclusion
 
-We now have a modal that you can use anywhere, multiple times, on the page! We used _hooks_ and _render props_ to create a reuseable `ToggleContent` component, that you can use for any modal-like use case. We used _portals_ to create a visual `Modal` component that can be used anywhere, but is positioned consistently on the page. Awesome!
+We used _hooks_ and _render props_ to create a generic, reuseable `ToggleContent` component, that you can use for any modal-like use case. We used _portals_ to create a visual `Modal` component that can be used anywhere, but is positioned consistently on the page. We then composed these components to have working modal that can be used anywhere, Awesome 😎!
 
 ## Reference
 
