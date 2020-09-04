@@ -34,7 +34,7 @@
     "imagemin-cli": "^3.0.0",
     "imagemin-mozjpeg": "^6.0.0",
     "imagemin-pngquant": "^5.0.0",
-    "node-sass": "^4.13.0",
+    "node-sass": "^4.13.1",
     "recursive-fs": "^1.0.0"
   }
 }
